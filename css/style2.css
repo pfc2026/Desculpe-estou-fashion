@@ -1,0 +1,235 @@
+/* Reset básico e configuração global */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* Controle de layout mais previsível */
+}
+
+body {
+    margin: 0;
+    padding: 0; /* Remove padding padrão do body */
+    font-family: 'Lato', sans-serif; /* Fonte padrão com fallback */
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased; /* Melhora renderização da fonte */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container principal que centraliza o conteúdo */
+.main-content {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px; /* Espaço vertical e horizontal na página */
+}
+
+/* Container rosa dos termos */
+.terms-container {
+    background-color: #FADADD; /* Rosa claro */
+    padding: 40px 50px;
+    border-radius: 25px;
+    max-width: 800px;
+    width: 100%; /* Ajusta para ocupar a largura disponível até o max-width */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Título Principal "TERMOS" */
+.terms-container h1 {
+    font-family: 'Playfair Display', serif; /* Fonte serifada com fallback */
+    font-size: clamp(2.5em, 5vw, 3.5em); /* Tamanho responsivo */
+    text-align: center;
+    color: #000000;
+    margin: 0 0 40px 0; /* Remove margin-top padrão */
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Seções individuais */
+.term-section {
+    margin-bottom: 35px;
+}
+
+/* Títulos das seções (h2) */
+.term-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3em, 3vw, 1.6em); /* Tamanho responsivo */
+    color: #000000;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+/* Parágrafos */
+.term-section p {
+    margin: 0 0 15px 0; /* Remove margin-top padrão */
+    color: #222;
+}
+
+/* Listas */
+.term-section ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0; /* Remove margin padrão */
+}
+
+.term-section li {
+    margin-bottom: 10px;
+    padding-left: 25px; /* Espaço para o marcador */
+    position: relative;
+    color: #222;
+}
+
+/* Marcador personalizado (bullet) */
+.term-section li::before {
+    content: '•';
+    color: #000000;
+    font-size: 1.4em;
+    position: absolute;
+    left: 0;
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-55%); /* Ajuste fino para centralização vertical */
+    line-height: 1; /* Evita afetar a altura da linha do li */
+}
+
+/* Seção de concordância */
+.agreement-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Wrapper do Checkbox */
+.checkbox-wrapper {
+    display: flex;
+    align-items: flex-start; /* Alinha no topo caso o texto quebre linha */
+    justify-content: center;
+    margin: 20px 0 30px 0; /* Ajusta margens */
+    gap: 10px;
+}
+
+/* Checkbox customizado */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    border: 2px solid #60A5FA; /* Azul */
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0; /* Não encolher */
+    margin-top: 2px; /* Pequeno ajuste para alinhar com a primeira linha do texto */
+}
+
+input[type="checkbox"]:checked {
+    background-color: #60A5FA;
+    border-color: #60A5FA;
+}
+
+input[type="checkbox"]:checked::after {
+    content: '✔';
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Foco visível para acessibilidade */
+input[type="checkbox"]:focus-visible {
+    outline: 2px solid #3B82F6;
+    outline-offset: 2px;
+}
+
+
+/* Label do Checkbox */
+.checkbox-wrapper label {
+    font-size: 0.95em;
+    color: #333;
+    cursor: pointer;
+    text-align: left;
+    max-width: calc(100% - 30px); /* Evita que a label empurre o checkbox */
+}
+
+.checkbox-wrapper label a {
+    color: #3B82F6; /* Azul link */
+    text-decoration: underline;
+}
+
+.checkbox-wrapper label a:hover {
+    text-decoration: none;
+}
+
+.required-star { /* Estilo opcional para o asterisco */
+    color: red;
+    font-weight: bold;
+    margin-left: 2px;
+}
+
+/* Grupo de Botões */
+.button-group {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; /* Permite que os botões quebrem linha em telas menores */
+}
+
+/* Estilo base dos botões */
+.btn {
+    padding: 12px 35px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    min-width: 120px; /* Largura mínima */
+    text-align: center;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Foco visível para acessibilidade */
+.btn:focus-visible {
+    outline: 2px solid #0056b3;
+    outline-offset: 2px;
+}
+
+/* Botão "Aceito" */
+.btn-accept {
+    background-color: #60A5FA; /* Azul */
+    color: #ffffff;
+}
+
+.btn-accept:hover {
+    background-color: #3B82F6; /* Azul mais escuro */
+}
+
+/* Botão Secundário (Branco) */
+.btn-secondary {
+    background-color: #ffffff;
+    color: #555; /* Cor de texto caso precise adicionar */
+    min-width: 120px; /* Mantém largura mínima */
+    height: 45px; /* Altura fixa para combinar */
+    padding: 0; /* Remove padding se não houver texto */
+    /* border: 1px solid #ccc; */ /* Borda opcional se precisar de definição */
+}
+
+.btn-secondary:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+/* Opcional: Estilos básicos para o header (manter se estiver usando) */
+/*
+.site-header { ... }
+.header-left { ... }
+// etc.
+*/

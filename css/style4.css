@@ -1,0 +1,175 @@
+/* Estilos gerais do body e da barra de navegação */
+body { margin: 0; font-family: sans-serif; }
+.navbar { background-color: #f8f9fa; padding: 10px 20px; display: flex; align-items: center; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
+.menu-icon { font-size: 24px; margin-right: 15px; cursor: pointer; }
+.logo-container { display: flex; align-items: center; }
+.logo-text { margin-left: 10px; font-weight: bold; color: #333; }
+.nav-links { list-style: none; padding: 0; margin: 0; display: flex; margin-left: 30px; }
+.nav-links li { margin-right: 20px; }
+.nav-links li a { text-decoration: none; color: #555; }
+.nav-links li span { display: none; /* Ocultando o texto menor abaixo de "Roupas" */ }
+.search-bar { flex-grow: 1; margin-left: 30px; display: flex; align-items: center; border: 1px solid #ccc; border-radius: 5px; padding: 5px 10px; }
+.search-input { border: none; outline: none; flex-grow: 1; margin-right: 5px; }
+.search-icon, .close-icon { font-size: 16px; color: #777; cursor: pointer; margin-left: 5px; }
+.cart-icon { font-size: 24px; margin-left: 20px; color: #333; cursor: pointer; }
+
+/* Estilos da promo-bar */
+.promo-bar { background-color: #fdecea; padding: 15px 20px; display: flex; justify-content: space-around; align-items: center; border-bottom: 1px solid #eee; }
+.promo-item { display: flex; align-items: center; color: #e64980; }
+.promo-item i { font-size: 24px; margin-right: 10px; }
+
+/* Estilos para a seção de produtos recomendados */
+.recommended-products {
+    padding: 20px;
+    background-color: #f8f9fa; /* Fundo claro para a seção */
+    border-top: 1px solid #eee;
+}
+
+.recommended-products h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.recommended-products .product-list {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto; /* Para rolagem horizontal em telas menores */
+    padding-bottom: 15px; /* Espaço para a barra de rolagem */
+}
+
+.recommended-products .product-item {
+    flex: 0 0 auto; /* Não encolher, não esticar, tamanho automático */
+    width: 220px; /* Largura aproximada dos produtos */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    background-color: white;
+    position: relative; /* Para posicionar o selo de desconto */
+}
+
+.recommended-products .product-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.recommended-products .product-item .price {
+    display: block;
+    padding: 10px;
+    font-weight: bold;
+    color: #e64980; /* Cor do preço */
+}
+
+.recommended-products .product-item .discount-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff4d4d; /* Cor do selo de desconto */
+    color: white;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+    z-index: 10; /* Para ficar acima da imagem */
+}
+
+.recommended-products .product-item .old-price {
+    display: block;
+    padding: 0 10px 10px;
+    color: #777;
+    font-size: 0.9em;
+    text-decoration: line-through;
+}
+
+.recommended-products .product-item p.description {
+    padding: 0 10px 10px;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.recommended-products .product-item p.gender {
+    padding: 0 10px 10px;
+    color: #777;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+/* Estilos da seção de inscrição */
+.subscription-payment {
+    padding: 20px;
+    background-color: #f8f9fa; /* Fundo claro para a seção */
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Para responsividade em telas menores */
+}
+
+.subscription {
+    flex: 1 1 300px; /* Largura flexível com base no conteúdo */
+    margin-bottom: 20px;
+}
+
+.subscription h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.subscription p {
+    color: #555;
+    font-size: 0.9em;
+}
+
+.subscription-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.subscription-form input[type="email"],
+.subscription-form input[type="tel"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex-grow: 1;
+}
+
+.subscription-form button {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.subscription-form button:hover {
+    background-color: #555;
+}
+
+/* Estilos da seção de formas de pagamento (agora abaixo dos produtos) */
+.payment-methods {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eee;
+    text-align: center; /* Centralizando os ícones */
+}
+
+.payment-methods h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.payment-methods .payment-icons {
+    display: flex;
+    justify-content: center; /* Centralizando os ícones */
+    gap: 20px; /* Espaçamento maior entre os ícones */
+    margin-top: 10px;}
+
+ .product-item {
+    position: relative;
+    text-decoration: none;
+ }

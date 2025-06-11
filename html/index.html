@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Estou Fashion</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header">
+        <!-- Logo removido -->
+        <span class="site-title">Desculpe, Estou Fashion</span>
+    </header>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+            </div>
+            <div class="input-group">
+                <label for="password">Senha:</label>
+                <div class="password-wrapper">
+                    <input type="password" id="password" name="password" required placeholder="Sua senha">
+                    <span class="toggle-password" id="togglePassword"></span>
+                </div>
+            </div>
+            <button type="submit" class="login-button">Login</button>
+         
+        </form>
+        <a href="index2.html" class="terms-link">Termos e Condições</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+/* Reset básico e fontes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #ffe0f2 100%); /* Gradiente suave no fundo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    min-height: 100vh;
+    padding: 20px;
+    color: #ffffff; /* Cor de texto padrão mais escura */
+}
+
+.site-header {
+    text-align: center; /* Centraliza o título do site */
+    margin-bottom: 40px; /* Mais espaço abaixo do título */
+}
+
+.site-title {
+    font-size: 1.8em; /* Tamanho ajustado */
+    font-weight: 600;
+    color: #333; /* Cor escura para o título */
+}
+
+.login-container {
+    background-color: #f571988f; /* Fundo branco para o container */
+    padding: 40px 50px; /* Mais padding horizontal */
+    border-radius: 12px; /* Bordas mais suaves */
+    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07); /* Sombra mais sofisticada */
+    width: 100%;
+    max-width: 420px; /* Largura ligeiramente ajustada */
+    text-align: center;
+}
+
+.login-container h1 {
+    font-family: 'Playfair Display', serif;
+    color: #ffffff; /* Um azul escuro/cinza para o título "Login" */
+    font-size: 3em; /* Tamanho ajustado */
+    margin-bottom: 35px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555; /* Cinza para labels */
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 18px; /* Padding ajustado */
+    border: 1px solid #dfe6e9; /* Borda sutil */
+    border-radius: 8px; /* Bordas arredondadas suaves */
+    font-size: 1em;
+    color: #333;
+    background-color: #f8f9fa; /* Fundo levemente acinzentado para inputs */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input::placeholder {
+    color: #a0aec0; /* Cor suave para o placeholder */
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #db2589; /* Cor de destaque roxa/azulada ao focar */
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2); /* Sombra suave ao focar */
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input {
+    padding-right: 22px; /* Espaço para o ícone do olho */
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.3em;
+    color: #777; /* Cor do ícone do olho */
+    transition: color 0.2s ease;
+}
+
+.toggle-password:hover {
+    color: #e64aaa; /* Cor do ícone ao passar o mouse */
+}
+
+.login-button {
+    background-color: #eb2265; /* Cor primária vibrante para o botão */
+    color: #FFFFFF;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600; /* Fonte mais encorpada */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    width: 100%;
+    margin-top: 15px;
+    box-shadow: 0 4px 6px rgba(108, 99, 255, 0.2); /* Sombra sutil no botão */
+}
+
+.login-button:hover {
+    background-color: #e22b77; /* Cor um pouco mais escura no hover */
+}
+
+.login-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(108, 99, 255, 0.2);
+}
+
+.terms-link {
+    display: block;
+    margin-top: 25px;
+    color: #636dff; /* Mesma cor do botão para consistência */
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.terms-link:hover {
+    color: #e4487775;
+    text-decoration: underline;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 30px 25px; /* Menos padding em telas pequenas */
+        margin-left: 10px;  /* Pequena margem para não colar nas bordas */
+        margin-right: 10px;
+    }
+    .login-container h1 {
+        font-size: 2.5em;
+    }
+    .site-title {
+        font-size: 1.5em;
+    }
+    body {
+        justify-content: flex-start; /* Alinha ao topo em telas pequenas para melhor scroll */
+        padding-top: 40px;
+    }
+}

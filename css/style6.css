@@ -1,0 +1,260 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f8f8f8;
+}
+
+/* Header/Navbar (reutilizando estilos anteriores) */
+.navbar {
+    background-color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-icon {
+    font-size: 24px;
+    margin-right: 15px;
+    cursor: pointer;
+    color: #333;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(to right, #ff6b6b, #4ecdc4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 0.8em;
+}
+
+.logo-text {
+    margin-left: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 20px;
+    display: flex;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #555;
+}
+
+.search-bar {
+    flex-grow: 1;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    margin-right: 5px;
+}
+
+.search-icon, .close-icon {
+    font-size: 16px;
+    color: #777;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.cart-icon {
+    font-size: 24px;
+    margin-left: 20px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Carrinho de Compras */
+.cart-container {
+    display: flex;
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.cart-items {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.cart-title {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.cart-title .checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.cart-title input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.cart-item.selected {
+    background-color: #ffe4e1; /* Rosa claro para o item selecionado */
+    border-radius: 5px;
+    padding: 15px;
+    margin: 5px 0;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.item-details {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.item-details img {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.item-info {
+    flex-grow: 1;
+}
+
+.item-name {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.item-price {
+    color: #e64980;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: #777;
+    font-weight: bold;
+    font-size: 1.2em;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Resumo do Pedido */
+.order-summary {
+    flex: 0.4;
+    background-color: #ffe4e1; /* Rosa claro para o resumo */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.summary-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #e64980;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    color: #555;
+}
+
+.summary-item span:first-child {
+    font-weight: bold;
+}
+
+.checkout-button {
+    background-color: #000;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.checkout-button:hover {
+    background-color: #333;
+}
+
+/* Métodos de Pagamento */
+.payment-methods {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.payment-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.payment-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.payment-icons img {
+    height: 30px;
+}
+
+/* Footer (reutilizando estilos anteriores) */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    margin-top: 20px;
+}
