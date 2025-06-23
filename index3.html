@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Moda</title>
+    <style>
+        /* Estilos anteriores (barra de navegação, promo-bar, product-categories) */
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .navbar {
+            background-color: #f8f9fa;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            margin-left: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            margin-left: 30px;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #555;
+        }
+
+        .nav-links li span {
+            display: block;
+            font-size: 0.8em;
+            color: #777;
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin-left: 30px;
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+
+        .search-input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            margin-right: 5px;
+        }
+
+        .search-icon,
+        .close-icon {
+            font-size: 16px;
+            color: #777;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .cart-icon {
+            font-size: 24px;
+            margin-left: 20px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .promo-bar {
+            background-color: #fdecea;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .promo-item {
+            display: flex;
+            align-items: center;
+            color: #e64980;
+        }
+
+        .promo-item i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .product-categories {
+            padding: 20px;
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+        }
+
+        .category-item {
+            flex: 0 0 auto;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .category-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .category-text {
+            padding: 10px;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .category-text button {
+            background-color: #f8f9fa;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+
+        .category-text button:hover {
+            background-color: #e9ecef;
+        }
+
+        /* Novos estilos para a seção de inscrição e pagamentos */
+        .subscription-payment {
+            padding: 20px;
+            background-color: #f8f9fa;
+            /* Fundo claro para a seção */
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            /* Para responsividade em telas menores */
+        }
+
+        .subscription {
+            flex: 1 1 300px;
+            /* Largura flexível com base no conteúdo */
+            margin-bottom: 20px;
+        }
+
+        .subscription h3,
+        .payment-methods h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .subscription p {
+            color: #555;
+            font-size: 0.9em;
+        }
+
+        .subscription-form {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .subscription-form input[type="email"],
+        .subscription-form input[type="tel"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            flex-grow: 1;
+        }
+
+        .subscription-form button {
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+
+        .subscription-form button:hover {
+            background-color: #555;
+        }
+
+        .payment-methods {
+            flex: 1 1 300px;
+            margin-bottom: 20px;
+        }
+
+        .payment-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            align-items: center;
+            /* Alinhar ícones verticalmente */
+        }
+
+        .payment-icons img {
+            height: 30px;
+            /* Ajuste o tamanho conforme necessário */
+        }
+
+        /* Estilos para os direitos reservados (rodapé) */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.8em;
+        }
+
+        .footer a {
+            color: #f8f9fa;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="logo-container">
+            <div style="width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(to right, #ff6b6b, #4ecdc4); display: flex; justify-content: center; align-items: center; color: white; font-size: 0.8em;">
+                99+</div>
+            <span class="logo-text">Desculpe,<br>Estou Fashion</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Roupas<br><span>de 1/3</span></a></li>
+            <li><a href="#">Roupas<br><span>de 4/6</span></a></li>
+            <li><a href="#">Roupas<br><span>de 7/9</span></a></li>
+            <li><a href="#">Roupas<br><span>de 10/11</span></a></li>
+        </ul>
+        <div class="search-bar">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Pesquisar...">
+            <i class="fas fa-times close-icon"></i>
+        </div>
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+    </div>
+
+    <div class="promo-bar">
+        <div class="promo-item">
+            <i class="fas fa-tags"></i>
+            <span>Vendas Ecológicas</span>
+        </div>
+        <div class="promo-item">
+            <i class="fas fa-truck"></i>
+            <span>Frete Grátis</span>
+        </div>
+        <div class="promo-item">
+            <i class="fas fa-undo-alt"></i>
+            <span>Devolução Grátis</span>
+        </div>
+    </div>
+
+    <div class="product-categories">
+        <div class="category-item">
+            <img src="https://via.placeholder.com/200x250/8fbc8f/ffffff?Text=Algodao%20Organico" alt="Algodão Orgânico">
+            <div class="category-text">
+                <button>Algodão orgânico</button>
+            </div>
+        </div>
+        <div class="category-item">
+            <img src="https://via.placeholder.com/200x250/f0e68c/ffffff?Text=Canhamo" alt="Cânhamo">
+            <div class="category-text">
+                <button>Cânhamo</button>
+            </div>
+        </div>
+        <div class="category-item">
+            <img src="https://via.placeholder.com/200x250/e0ffff/000000?Text=Linho" alt="Linho">
+            <div class="category-text">
+                <button>Linho</button>
+            </div>
+        </div>
+        <div class="category-item">
+            <img src="https://via.placeholder.com/200x250/dda0dd/ffffff?Text=Modal" alt="Modal">
+            <div class="category-text">
+                <button>Modal</button>
+            </div>
+        </div>
+        <div class="category-item">
+            <img src="https://via.placeholder.com/200x250/faebd7/000000?Text=Seda%20de%20soja" alt="Seda de soja">
+            <div class="category-text">
+                <button>Seda de soja</button>
+            </div>
+        </div>
+        <div class="category-item">
+            <img src="https://via.placeholder.com/200x250/ff8c00/ffffff?Text=Seda%20de%20laranja" alt="Seda de laranja">
+            <div class="category-text">
+                <button>Seda de laranja</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="subscription-payment">
+        <div class="subscription">
+            <h3>Encontre-nos</h3>
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <a href="#" style="color: #333;"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" style="color: #333;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: #333;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: #333;"><i class="fab fa-pinterest"></i></a>
+                <a href="#" style="color: #333;"><i class="fab fa-tiktok"></i></a>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.8em;">Cadastre-se para receber notícias sobre Desculpe, Estou
+                Fashion.</p>
+            <form class="subscription-form">
+                <input type="tel" placeholder="DDD + Telefone">
+                <button type="submit">subscribe</button>
+            </form>
+            <form class="subscription-form" style="margin-top: 10px;">
+                <input type="email" placeholder="Endereço do seu e-mail">
+                <button type="submit">Inscreva-se</button>
+            </form>
+        </div>
+
+        <div class="payment-methods">
+            <h3>Formas de Pagamento</h3>
+            <div class="payment-icons">
+                <img src="https://via.placeholder.com/50/4169E1/FFFFFF?Text=VISA" alt="Visa">
+                <img src="https://via.placeholder.com/50/FF69B4/FFFFFF?Text=MASTERCARD" alt="Mastercard">
+                <img src="https://via.placeholder.com/50/008000/FFFFFF?Text=PIX" alt="PIX">
+                <img src="https://via.placeholder.com/50/FFA500/FFFFFF?Text=BOLETO" alt="Boleto">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Todos os direitos reservados Desculpe, Estou Fashion | <a href="#">Política de Privacidade</a> |
+            <a href="#">Termos e Condições</a> | <a href="#">Regras do IP do Marketplace</a> | <a href="#">Anúncios</a>
+        </p>
+        <div class="payment-icons" style="justify-content: center; margin-top: 10px;">
+            <img src="https://via.placeholder.com/40/4169E1/FFFFFF?Text=VISA" alt="Visa" style="height: 25px;">
+            <img src="https://via.placeholder.com/40/FF69B4/FFFFFF?Text=MC" alt="Mastercard" style="height: 25px;">
+            <img src="https://via.placeholder.com/40/008000/FFFFFF?Text=PIX" alt="PIX" style="height: 25px;">
+            <img src="https://via.placeholder.com/40/ADD8E6/000000?Text=CAIXA" alt="Caixa" style="height: 25px;">
+            <img src="https://via.placeholder.com/40/800080/FFFFFF?Text=Pay" alt="Pay" style="height: 25px;">
+        </div>
+    </div>
+
+</body>
+
+</html>
