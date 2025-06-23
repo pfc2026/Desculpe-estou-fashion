@@ -1,54 +1,126 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-        <link rel="stylesheet" href="css/style4.css">
+    <title>Meu Carrinho</title>
+
+    <!-- Todos os links de fontes e ícones ficam aqui, dentro do <head> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <div class="navbar">
-        <div class="menu-icon">
-            <i class="fas fa-bars"></i>
-        </div>
-        <div class="logo-container">
-            <div style="width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(to right, #ff6b6b, #4ecdc4); display: flex; justify-content: center; align-items: center; color: white; font-size: 0.8em;">99+</div>
-            <span class="logo-text">Desculpe,<br>Estou Fashion</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">Roupas</a></li>
-            <li><a href="#">Roupas</a></li>
-            <li><a href="#">Roupas</a></li>
-            <li><a href="#">Roupas</a></li>
-        </ul>
-        <div class="search-bar">
-            <i class="fas fa-search search-icon"></i>
-            <input type="text" class="search-input" placeholder="Pesquisar...">
-            <i class="fas fa-times close-icon"></i>
-        </div>
-        <div class="cart-icon">
-            <i class="fas fa-shopping-cart"></i>
-        </div>
-    </div>
-
-    <div class="promo-bar">
-        <div class="promo-item">
-            <i class="fas fa-tags"></i>
-            <span>Vendas Ecológicas</span>
-        </div>
-        <div class="promo-item">
-            <i class="fas fa-truck"></i>
-            <span>Frete Grátis</span>
-        </div>
-        <div class="promo-item">
-            <i class="fas fa-undo-alt"></i>
-            <span>Devolução Grátis</span>
-        </div>
-    </div>
-
     
+    <!-- Apenas UM link para sua folha de estilos principal -->
+    <link rel="stylesheet" href="css/carrinho.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO DO SITE -->
+    <header>
+        <div class="navbar">
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="logo-container">
+                <div style="width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(to right, #ff6b6b, #4ecdc4); display: flex; justify-content: center; align-items: center; color: white; font-size: 0.8em;">99+</div>
+                <span class="logo-text">Desculpe,<br>Estou Fashion</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#">Roupas</a></li>
+                <li><a href="#">Roupas</a></li>
+                <li><a href="#">Roupas</a></li>
+                <li><a href="#">Roupas</a></li>
+            </ul>
+            <div class="search-bar">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Pesquisar...">
+                <i class="fas fa-times close-icon"></i>
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </div>
+
+        <div class="promo-bar">
+            <div class="promo-item">
+                <i class="fas fa-tags"></i>
+                <span>Vendas Ecológicas</span>
+            </div>
+            <div class="promo-item">
+                <i class="fas fa-truck"></i>
+                <span>Frete Grátis</span>
+            </div>
+            <div class="promo-item">
+                <i class="fas fa-undo-alt"></i>
+                <span>Devolução Grátis</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL DA PÁGINA DO CARRINHO -->
+    <main class="cart-container">
+        <!-- Coluna da Esquerda: Lista de Produtos -->
+        <div class="product-list">
+            <div class="list-header">
+                <input type="checkbox" id="select-all" class="custom-checkbox">
+                <h2>Todos os produtos (<span id="product-count">0</span>)</h2>
+            </div>
+            
+            <div id="cart-items">
+                <!-- Item 1 (Botão "X" removido) -->
+                <div class="cart-item" data-id="1" data-price="119.99">
+                    <input type="checkbox" class="item-checkbox custom-checkbox">
+                    <img src="compras/carrinho (1).png" alt="Vestido vintage">
+                    <div class="item-details">
+                        <p class="item-name">Vestido vintage</p>
+                        <p class="item-price">R$ 119,99</p>
+                    </div>
+                </div>
+                <!-- Item 2 (Botão "X" removido) -->
+                <div class="cart-item" data-id="2" data-price="99.90">
+                    <input type="checkbox" class="item-checkbox custom-checkbox">
+                    <img src="compras/carrinho (2).png" alt="Conjunto jeans masculino">
+                    <div class="item-details">
+                        <p class="item-name">Conjunto jeans masculino</p>
+                        <p class="item-price">R$ 99,90</p>
+                    </div>
+                </div>
+                <!-- Item 3 (Botão "X" removido) -->
+                <div class="cart-item" data-id="3" data-price="149.99">
+                    <input type="checkbox" class="item-checkbox custom-checkbox">
+                    <img src="compras/carrinho (3).png" alt="Vestido basico">
+                    <div class="item-details">
+                        <p class="item-name">Vestido basico</p>
+                        <p class="item-price">R$ 149,99</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Coluna da Direita: Resumo e Pagamento -->
+        <div class="summary-column">
+            <div class="summary-box">
+                <h2 id="total-price">Total a pagar: R$0,00</h2>
+                <div id="summary-items"></div>
+                <button class="checkout-btn">COMPRE AGORA</button>
+            </div>
+            <div class="payment-section">
+                <h3>PAGAMENTO</h3>
+                <div class="payment-icons">
+                    <img src="https://i.imgur.com/bDERh6n.png" alt="Visa">
+                    <img src="https://i.imgur.com/5g5we1o.png" alt="Mastercard">
+                    <img src="https://i.imgur.com/EadYQev.png" alt="Boleto">
+                    <img src="https://i.imgur.com/kC5w1s4.png" alt="PayPal">
+                    <img src="https://i.imgur.com/2Yy4YyD.png" alt="Caixa">
+                    <img src="https://i.imgur.com/5gT8V1G.png" alt="Apple Pay">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- O SCRIPT vai aqui, logo antes de fechar o </body> -->
+    <script src="script/carrinho.js"></script>
 </body>
 </html>
