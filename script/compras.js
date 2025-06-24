@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Exibe uma mensagem de confirmação para o usuário
-        alert(`Produto adicionado ao carrinho!\nTamanho: ${selectedSize}\nCor: ${selectedColorInfo}`);
+       // alert(`Produto adicionado ao carrinho!\nTamanho: ${selectedSize}\nCor: ${selectedColorInfo}`);
     });
 
     // Ação do botão de Wishlist (coração)
