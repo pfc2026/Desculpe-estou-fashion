@@ -29,7 +29,7 @@ body {
 }
 
 .login-container {
-    background-color: #f571988f; /* Fundo branco para o container */
+    background-color: #ffffff; /* Fundo branco para o container */
     padding: 40px 50px; /* Mais padding horizontal */
     border-radius: 12px; /* Bordas mais suaves */
     box-shadow: 0 15px 35px rgba(255, 255, 255, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07); /* Sombra mais sofisticada */
@@ -40,7 +40,7 @@ body {
 
 .login-container h1 {
     font-family: 'Playfair Display', serif;
-    color: #ffffff; /* Um azul escuro/cinza para o título "Login" */
+    color: #ffa1c8; /* Um azul escuro/cinza para o título "Login" */
     font-size: 3em; /* Tamanho ajustado */
     margin-bottom: 35px;
 }
@@ -75,7 +75,7 @@ body {
 
 .input-group input:focus {
     outline: none;
-    border-color: #db2589; /* Cor de destaque roxa/azulada ao focar */
+    border-color: #ffffff; /* Cor de destaque roxa/azulada ao focar */
     box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2); /* Sombra suave ao focar */
 }
 
@@ -106,8 +106,8 @@ body {
 }
 
 .login-button {
-    background-color: #eb2265; /* Cor primária vibrante para o botão */
-    color: #FFFFFF;
+    background-color: #c7c7c7; /* Cor primária vibrante para o botão */
+    color: #ffffff;
     border: none;
     padding: 15px;
     border-radius: 8px;
@@ -121,7 +121,7 @@ body {
 }
 
 .login-button:hover {
-    background-color: #e22b77; /* Cor um pouco mais escura no hover */
+    background-color: rgb(245, 164, 231); /* Cor um pouco mais escura no hover */
 }
 
 .login-button:active {
