@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Moda</title>
     <style>
-        /* Estilos anteriores (barra de navegação, promo-bar, product-categories) */
+        /* Estilos anteriores */
         body {
             margin: 0;
             font-family: sans-serif;
@@ -26,6 +26,19 @@
             cursor: pointer;
         }
 
+        /* ===== ESTILO PARA O NOVO ÍCONE DE LOGIN ===== */
+        .login-icon {
+            font-size: 26px; /* Tamanho similar aos outros ícones */
+            color: #333;
+            margin-right: 20px; /* Espaço entre ele e o logo */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .login-icon:hover {
+            color: #e64980; /* Cor de destaque no hover */
+        }
+        /* ============================================== */
+
         .logo-container {
             display: flex;
             align-items: center;
@@ -42,6 +55,7 @@
             padding: 0;
             margin: 0;
             display: flex;
+            align-items: center;
             margin-left: 30px;
         }
 
@@ -92,163 +106,30 @@
             cursor: pointer;
         }
 
-        .promo-bar {
-            background-color: #fdecea;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border-bottom: 1px solid #eee;
-        }
-
-        .promo-item {
-            display: flex;
-            align-items: center;
-            color: #e64980;
-        }
-
-        .promo-item i {
-            font-size: 24px;
-            margin-right: 10px;
-        }
-
-        .product-categories {
-            padding: 20px;
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-        }
-
-        .category-item {
-            flex: 0 0 auto;
-            width: 200px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        .category-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .category-text {
-            padding: 10px;
-            text-align: center;
-            background-color: #fff;
-        }
-
-        .category-text button {
-            background-color: #f8f9fa;
-            color: #333;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 8px 15px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: background-color 0.3s ease;
-        }
-
-        .category-text button:hover {
-            background-color: #e9ecef;
-        }
-
-        /* Novos estilos para a seção de inscrição e pagamentos */
-        .subscription-payment {
-            padding: 20px;
-            background-color: #f8f9fa;
-            /* Fundo claro para a seção */
-            border-top: 1px solid #eee;
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            /* Para responsividade em telas menores */
-        }
-
-        .subscription {
-            flex: 1 1 300px;
-            /* Largura flexível com base no conteúdo */
-            margin-bottom: 20px;
-        }
-
-        .subscription h3,
-        .payment-methods h3 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .subscription p {
-            color: #555;
-            font-size: 0.9em;
-        }
-
-        .subscription-form {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .subscription-form input[type="email"],
-        .subscription-form input[type="tel"] {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            flex-grow: 1;
-        }
-
-        .subscription-form button {
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: background-color 0.3s ease;
-        }
-
-        .subscription-form button:hover {
-            background-color: #555;
-        }
-
-        .payment-methods {
-            flex: 1 1 300px;
-            margin-bottom: 20px;
-        }
-
-        .payment-icons {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-            align-items: center;
-            /* Alinhar ícones verticalmente */
-        }
-
-        .payment-icons img {
-            height: 30px;
-            /* Ajuste o tamanho conforme necessário */
-        }
-
-        /* Estilos para os direitos reservados (rodapé) */
-        .footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 0.8em;
-        }
-
-        .footer a {
-            color: #f8f9fa;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            text-decoration: underline;
-        }
+        /* O resto do seu CSS permanece o mesmo */
+        .promo-bar { background-color: #fdecea; padding: 15px 20px; display: flex; justify-content: space-around; align-items: center; border-bottom: 1px solid #eee; }
+        .promo-item { display: flex; align-items: center; color: #e64980; }
+        .promo-item i { font-size: 24px; margin-right: 10px; }
+        .product-categories { padding: 20px; display: flex; gap: 20px; overflow-x: auto; }
+        .category-item { flex: 0 0 auto; width: 200px; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); }
+        .category-item img { width: 100%; height: auto; display: block; }
+        .category-text { padding: 10px; text-align: center; background-color: #fff; }
+        .category-text button { background-color: #f8f9fa; color: #333; border: 1px solid #ccc; border-radius: 5px; padding: 8px 15px; cursor: pointer; font-size: 0.9em; transition: background-color 0.3s ease; }
+        .category-text button:hover { background-color: #e9ecef; }
+        .subscription-payment { padding: 20px; background-color: #f8f9fa; border-top: 1px solid #eee; display: flex; justify-content: space-around; align-items: flex-start; flex-wrap: wrap; }
+        .subscription { flex: 1 1 300px; margin-bottom: 20px; }
+        .subscription h3, .payment-methods h3 { color: #333; margin-bottom: 10px; }
+        .subscription p { color: #555; font-size: 0.9em; }
+        .subscription-form { display: flex; gap: 10px; margin-top: 15px; }
+        .subscription-form input[type="email"], .subscription-form input[type="tel"] { padding: 10px; border: 1px solid #ccc; border-radius: 5px; flex-grow: 1; }
+        .subscription-form button { background-color: #333; color: white; border: none; border-radius: 5px; padding: 10px 15px; cursor: pointer; font-size: 0.9em; transition: background-color 0.3s ease; }
+        .subscription-form button:hover { background-color: #555; }
+        .payment-methods { flex: 1 1 300px; margin-bottom: 20px; }
+        .payment-icons { display: flex; gap: 10px; margin-top: 10px; align-items: center; }
+        .payment-icons img { height: 30px; }
+        .footer { background-color: #333; color: white; text-align: center; padding: 15px 0; font-size: 0.8em; }
+        .footer a { color: #f8f9fa; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -259,6 +140,13 @@
         <div class="menu-icon">
             <i class="fas fa-bars"></i>
         </div>
+
+        <!-- ===== ÍCONE DE LOGIN ADICIONADO AQUI ===== -->
+        <a href="index.html" class="login-icon" title="Fazer Login">
+            <i class="fas fa-user-circle"></i>
+        </a>
+        <!-- ============================================ -->
+
         <div class="logo-container">
             <div style="width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(to right, #ff6b6b, #4ecdc4); display: flex; justify-content: center; align-items: center; color: white; font-size: 0.8em;">
                 99+</div>
@@ -269,6 +157,7 @@
             <li><a href="#">Contato<br></a></li>
             <li><a href="#">Masculino<br></a></li>
             <li><a href="#">Feminino<br></a></li>
+            <!-- O botão de login foi removido daqui -->
         </ul>
         <div class="search-bar">
             <i class="fas fa-search search-icon"></i>
@@ -280,58 +169,20 @@
         </div>
     </div>
 
+    <!-- O resto do seu body permanece o mesmo -->
     <div class="promo-bar">
-        <div class="promo-item">
-            <i class="fas fa-tags"></i>
-            <span>Vendas Ecológicas</span>
-        </div>
-        <div class="promo-item">
-            <i class="fas fa-truck"></i>
-            <span>Frete Grátis</span>
-        </div>
-        <div class="promo-item">
-            <i class="fas fa-undo-alt"></i>
-            <span>Devolução Grátis</span>
-        </div>
+        <div class="promo-item"> <i class="fas fa-tags"></i> <span>Vendas Ecológicas</span> </div>
+        <div class="promo-item"> <i class="fas fa-truck"></i> <span>Frete Grátis</span> </div>
+        <div class="promo-item"> <i class="fas fa-undo-alt"></i> <span>Devolução Grátis</span> </div>
     </div>
 
     <div class="product-categories">
-        <div class="category-item">
-            <img src="compras/Pagina inicial (1).png" alt="Algodão Orgânico">
-            <div class="category-text">
-                <button>Algodão orgânico</button>
-            </div>
-        </div>
-        <div class="category-item">
-            <img src="compras/Pagina inicial (2).png" alt="Cânhamo">
-            <div class="category-text">
-                <button>Cânhamo</button>
-            </div>
-        </div>
-        <div class="category-item">
-            <img src="compras/Pagina inicial (3).png" alt="Linho">
-            <div class="category-text">
-                <button>Linho</button>
-            </div>
-        </div>
-        <div class="category-item">
-            <img src="compras/Pagina inicial (4).png" alt="Modal">
-            <div class="category-text">
-                <button>Modal</button>
-            </div>
-        </div>
-        <div class="category-item">
-            <img src="compras/Pagina inicial (5).png" alt="Seda de soja">
-            <div class="category-text">
-                <button>Seda de soja</button>
-            </div>
-        </div>
-        <div class="category-item">
-            <img src="compras/" alt="Seda de laranja">
-            <div class="category-text">
-                <button>Seda de laranja</button>
-            </div>
-        </div>
+        <div class="category-item"> <img src="compras/Pagina inicial (1).png" alt="Algodão Orgânico"> <div class="category-text"> <button>Algodão orgânico</button> </div> </div>
+        <div class="category-item"> <img src="compras/Pagina inicial (2).png" alt="Cânhamo"> <div class="category-text"> <button>Cânhamo</button> </div> </div>
+        <div class="category-item"> <img src="compras/Pagina inicial (3).png" alt="Linho"> <div class="category-text"> <button>Linho</button> </div> </div>
+        <div class="category-item"> <img src="compras/Pagina inicial (4).png" alt="Modal"> <div class="category-text"> <button>Modal</button> </div> </div>
+        <div class="category-item"> <img src="compras/Pagina inicial (5).png" alt="Seda de soja"> <div class="category-text"> <button>Seda de soja</button> </div> </div>
+        <div class="category-item"> <img src="compras/" alt="Seda de laranja"> <div class="category-text"> <button>Seda de laranja</button> </div> </div>
     </div>
 
     <div class="subscription-payment">
@@ -344,8 +195,7 @@
                 <a href="#" style="color: #333;"><i class="fab fa-pinterest"></i></a>
                 <a href="#" style="color: #333;"><i class="fab fa-tiktok"></i></a>
             </div>
-            <p style="margin-top: 15px; font-size: 0.8em;">Cadastre-se para receber notícias sobre Desculpe, Estou
-                Fashion.</p>
+            <p style="margin-top: 15px; font-size: 0.8em;">Cadastre-se para receber notícias sobre Desculpe, Estou Fashion.</p>
             <form class="subscription-form">
                 <input type="tel" placeholder="DDD + Telefone">
                 <button type="submit">subscribe</button>
@@ -355,7 +205,6 @@
                 <button type="submit">Inscreva-se</button>
             </form>
         </div>
-
         <div class="payment-methods">
             <h3>Formas de Pagamento</h3>
             <div class="payment-icons">
@@ -368,9 +217,7 @@
     </div>
 
     <div class="footer">
-        <p>&copy; 2025 Todos os direitos reservados Desculpe, Estou Fashion | <a href="#">Política de Privacidade</a> |
-            <a href="#">Termos e Condições</a> | <a href="#">Regras do IP do Marketplace</a> | <a href="#">Anúncios</a>
-        </p>
+        <p>© 2025 Todos os direitos reservados Desculpe, Estou Fashion | <a href="#">Política de Privacidade</a> | <a href="#">Termos e Condições</a> | <a href="#">Regras do IP do Marketplace</a> | <a href="#">Anúncios</a> </p>
         <div class="payment-icons" style="justify-content: center; margin-top: 10px;">
             <img src="https://via.placeholder.com/40/4169E1/FFFFFF?Text=VISA" alt="Visa" style="height: 25px;">
             <img src="https://via.placeholder.com/40/FF69B4/FFFFFF?Text=MC" alt="Mastercard" style="height: 25px;">
@@ -381,5 +228,4 @@
     </div>
 
 </body>
-
 </html>
