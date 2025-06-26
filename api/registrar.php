@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 // Conexão com o banco de dados
 $servername = "localhost";
 $username = "Luiz"; // ajuste para o seu usuário do banco
@@ -34,6 +36,7 @@ if ($stmt->execute()) {
     // Redireciona para a página principal após cadastro
     header("Location: ../index3.html");
     exit();
+    die('ok');
 } else {
     echo "Erro ao cadastrar: " . $stmt->error;
 }
