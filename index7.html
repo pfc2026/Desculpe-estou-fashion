@@ -126,35 +126,42 @@
     <div class="signup-container">
         <h1>Criar Conta</h1>
 
-        <!-- Ao clicar em "Criar Conta", o formulário será enviado para 'index2.html' -->
-        <a href="index7.html"><form action="api/registrar.php" method="post"></form></a>
-            
+        <!-- Mensagem de status -->
+        <div id="status-message" style="text-align:center; margin-bottom:1rem; color:#d9534f; font-weight:bold;"></div>
+
+        <form action="api/registrar.php" method="post">
             <div class="form-group">
                 <label for="nome">Nome Completo</label>
                 <input type="text" id="nome" name="name" placeholder="Digite seu nome completo" required>
             </div>
-            
             <div class="form-group">
                 <label for="email">E-mail</label>
                 <input type="email" id="email" name="email" placeholder="seu.email@exemplo.com" required>
             </div>
-            
             <div class="form-group">
                 <label for="senha">Senha</label>
                 <input type="password" id="senha" name="password" placeholder="Crie uma senha forte" required minlength="8">
             </div>
-            
-            <!-- Botão para submeter o formulário -->
             <button type="submit" class="btn-submit">Criar Conta</button>
-
         </form>
         
-        <!-- Link para "fazer login" que leva de volta para esta mesma página -->
         <p class="login-link">
             Já tem uma conta? <a href="index.html">Faça login</a>
         </p>
-
     </div>
 
+    <script>
+    // Exibe mensagem de status baseada em parâmetro GET
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get('status');
+    const msg = {
+        success: "Conta criada com sucesso!",
+        error: "Não foi possível criar a conta."
+    };
+    if (status && msg[status]) {
+        document.getElementById('status-message').textContent = msg[status];
+        document.getElementById('status-message').style.color = status === 'success' ? '#28a745' : '#d9534f';
+    }
+    </script>
 </body>
 </html>
