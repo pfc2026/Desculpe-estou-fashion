@@ -1,7 +1,7 @@
 <?php
 
-$dbname = 'desculpe_estou_fashion_db';
-$host = 'localhost'; // NÃO coloque :3306 aqui!
+$dbname = 'desculpeestoufashion';
+$host = 'localhost';
 $username = 'Luiz';
 $password = 'luiz2026';
 
