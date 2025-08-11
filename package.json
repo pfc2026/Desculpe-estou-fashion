@@ -2,6 +2,7 @@
   "dependencies": {
     "mongodb": "^6.17.0",
     "mysql": "^2.18.1",
+    "node": "^22.18.0",
     "sqlite3": "^5.1.7"
   }
 }

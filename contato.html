@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato | Desculpe, Estou Fashion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { margin: 0; font-family: sans-serif; }
+        /* ...navbar, promo-bar, etc. estilos do index3.html... */
+        .navbar { background-color: #f8f9fa; padding: 10px 20px; display: flex; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .menu-icon { font-size: 24px; margin-right: 15px; cursor: pointer; }
+        .login-icon { font-size: 26px; color: #333; margin-right: 20px; text-decoration: none; transition: color 0.3s ease; }
+        .login-icon:hover { color: #e64980; }
+        .logo-container { display: flex; align-items: center; }
+        .logo-text { margin-left: 10px; font-weight: bold; color: #333; }
+        .nav-links { list-style: none; padding: 0; margin: 0; display: flex; align-items: center; margin-left: 30px; }
+        .nav-links li { margin-right: 20px; }
+        .nav-links li a { text-decoration: none; color: #555; }
+        .nav-links li span { display: block; font-size: 0.8em; color: #777; }
+        .search-bar { flex-grow: 1; margin-left: 30px; display: flex; align-items: center; border: 1px solid #ccc; border-radius: 5px; padding: 5px 10px; }
+        .search-input { border: none; outline: none; flex-grow: 1; margin-right: 5px; }
+        .search-icon, .close-icon { font-size: 16px; color: #777; cursor: pointer; margin-left: 5px; }
+        .cart-icon { font-size: 24px; margin-left: 20px; color: #333; cursor: pointer; }
+        .promo-bar { background-color: #fdecea; padding: 15px 20px; display: flex; justify-content: space-around; align-items: center; border-bottom: 1px solid #eee; }
+        .promo-item { display: flex; align-items: center; color: #e64980; }
+        .promo-item i { font-size: 24px; margin-right: 10px; }
+        .footer { background-color: #333; color: white; text-align: center; padding: 15px 0; font-size: 0.8em; }
+        .footer a { color: #f8f9fa; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        .contato-container { max-width: 500px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 32px; }
+        .contato-container h2 { margin-top: 0; color: #e64980; }
+        .contato-form label { display: block; margin-bottom: 8px; color: #333; }
+        .contato-form input, .contato-form textarea { width: 100%; padding: 10px; margin-bottom: 16px; border: 1px solid #ccc; border-radius: 5px; font-size: 1em; }
+        .contato-form button { background-color: #e64980; color: white; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer; font-size: 1em; transition: background-color 0.3s ease; }
+        .contato-form button:hover { background-color: #c2185b; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="menu-icon">
+            <i class="fas fa-bars"></i>
+        </div>
+        <a href="index.html" class="login-icon" title="Fazer Login">
+            <i class="fas fa-user-circle"></i>
+        </a>
+        <div class="logo-container">
+            <div style="width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(to right, #ff6b6b, #4ecdc4); display: flex; justify-content: center; align-items: center; color: white; font-size: 0.8em;">99+</div>
+            <span class="logo-text">Desculpe,<br>Estou Fashion</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index4.html">Recomendados<br></a></li>
+            <li><a href="contato.html">Contato<br></a></li>
+            <li><a href="#">Masculino<br></a></li>
+            <li><a href="#">Feminino<br></a></li>
+        </ul>
+        <div class="search-bar">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" placeholder="Pesquisar...">
+            <i class="fas fa-times close-icon"></i>
+        </div>
+        <div class="cart-icon">
+            <a href="carrinho.html"></a><i class="fas fa-shopping-cart"></i>
+        </div>
+    </div>
+    <div class="promo-bar">
+        <div class="promo-item"> <i class="fas fa-tags"></i> <span>Vendas Ecológicas</span> </div>
+        <div class="promo-item"> <i class="fas fa-truck"></i> <span>Frete Grátis</span> </div>
+        <div class="promo-item"> <i class="fas fa-undo-alt"></i> <span>Devolução Grátis</span> </div>
+    </div>
+    <div class="contato-container">
+        <h2>Fale Conosco</h2>
+        <form class="contato-form">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+            <button type="submit"><i class="fas fa-paper-plane"></i> Enviar</button>
+        </form>
+    </div>
+    <div class="footer">
+        <p>© 2025 Todos os direitos reservados Desculpe, Estou Fashion | <a href="#">Política de Privacidade</a> | <a href="#">Termos e Condições</a> | <a href="#">Regras do IP do Marketplace</a> | <a href="#">Anúncios</a> </p>
+        <div class="payment-icons" style="justify-content: center; margin-top: 10px;">
+            <img src="https://via.placeholder.com/40/4169E1/FFFFFF?Text=VISA" alt="Visa" style="height: 25px;">
+            <img src="https://via.placeholder.com/40/FF69B4/FFFFFF?Text=MC" alt="Mastercard" style="height: 25px;">
+            <img src="https://via.placeholder.com/40/008000/FFFFFF?Text=PIX" alt="PIX" style="height: 25px;">
+            <img src="https://via.placeholder.com/40/ADD8E6/000000?Text=CAIXA" alt="Caixa" style="height: 25px;">
+            <img src="https://via.placeholder.com/40/800080/FFFFFF?Text=Pay" alt="Pay" style="height: 25px;">
+        </div>
+    </div>
+</body>
+</html>

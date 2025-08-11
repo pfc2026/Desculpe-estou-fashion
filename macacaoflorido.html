@@ -1,11 +1,141 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Página do Produto</title>
+    
+    <!-- CORREÇÃO: Links devem estar no <head> -->
+    <link rel="stylesheet" href="css/roupas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="navbar">
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="logo-container">
+                <div style="width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(to right, #ff6b6b, #4ecdc4); display: flex; justify-content: center; align-items: center; color: white; font-size: 0.8em;">99+</div>
+                <span class="logo-text">Desculpe,<br>Estou Fashion</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index3.html">Recomendados</a></li>
+                <li><a href="#">Masculino</a></li>
+                <li><a href="#">Feminino</a></li>
+                <li><a href="contato.html">Contatos</a></li>
+            </ul>
+            <div class="search-bar">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Pesquisar...">
+                <i class="fas fa-times close-icon"></i>
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+            </div>
+        </div>
+
+        <div class="promo-bar">
+            <div class="promo-item">
+                <i class="fas fa-tags"></i>
+                <span>Vendas Ecológicas</span>
+            </div>
+            <div class="promo-item">
+                <i class="fas fa-truck"></i>
+                <span>Frete Grátis</span>
+            </div>
+            <div class="promo-item">
+                <i class="fas fa-undo-alt"></i>
+                <span>Devolução Grátis</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="product-page-container">
+        
+        <!-- CORREÇÃO: Div para a galeria de imagem (coluna esquerda) -->
+        <div class="product-gallery">
+            <!-- Substitua pelo caminho correto da sua imagem -->
+            <img src="compras/pagina de compras (3).png" alt="Macacão Feminino Florido">
+        </div>
+
+        <!-- CORREÇÃO: Div para os detalhes do produto (coluna direita) -->
+        <div class="product-details">
+            <div class="title-section">
+                <span class="tag-purple">Tendências</span>
+                <h1>Macacão Feminino</h1>
+                <i class="fas fa-external-link-alt"></i>
+            </div>
+
+
+            <div class="reviews">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+               <!-- <a href="#">(1000+ Comentários)</a> -->
+            </div>
+
+            <div class="price-section">
+                <span class="current-price">R$85,50</span>
+               <span class="original-price">R$95,50</span>
+              <!--  <span class="discount-badge">-25%</span>-->
+            </div>
+
+            <div class="offer-banners">
+                <div class="offer">25% OFF Para pedidos R$169,00+ <i class="fas fa-chevron-right"></i></div>
+                <div class="offer">R$15,00 OFF Para pedidos R$... <i class="fas fa-chevron-right"></i></div>
+            </div>
+
+            <div class="color-selector">
+                <p><strong>Cor:</strong> Florido</p>
+                <div class="swatches">
+                </div>
+            </div>
+
+            <div class="size-selector">
+                <div class="size-header">
+                    <p><strong>Tamanho</strong></p>
+                    <a href="#">BR Tamanho <i class="fas fa-chevron-down"></i></a>
+                </div>
+                <div class="size-buttons">
+                    <button>10</button>
+                    <button>12</button>
+                    <button>14</button>
+                    <button>16</button>
+                    <button>P</button>
+                </div>
+                <div class="size-guides">
+                    <a href="#"><i class="fas fa-ruler-horizontal"></i> Guia de tamanhos</a>
+                    <a href="#"><i class="fas fa-robot"></i> Encontrar Seu Tamanho</a>
+                </div>
+            </div>
+
+            <div class="shipping-info">
+                <p><strong>Enviado por</strong></p>
+                <div class="shipping-options">
+                    <button>Envio Nacional</button>
+                    <button class="active">Internacional</button>
+                </div>
+                <div class="import-notice">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Produto Internacional sujeito à declaração de importação e a tributos estaduais e federais.</span>
+                </div>
+            </div>
+
+        <a href="carrinho.html">    <div class="actions">
+                <button class="add-to-cart">
+                    ADICIONAR AO CARRINHO
+                  
+                </button>
+                <button class="wishlist"><i class="far fa-heart"></i></button>
+            </div></a>
+            
+            <p class="points-info">Ganhe até <strong>19 pontos SHEIN</strong> calculados no checkout.</p>
+        </div>
+    </main>
+
 </body>
 </html>
+
+<script src="script/compras.js"></script>
