@@ -2,8 +2,8 @@
 
 
 $servername = "localhost";
-$username = "Luiz"; // ajuste conforme seu usuário do MySQL
-$password = "luiz2026"; // ajuste conforme sua senha do MySQL
+$username = "root"; // usuário padrão do XAMPP
+$password = ""; // senha padrão do XAMPP (vazia)
 $dbname = "desculpe_estou_fashion_db";
 
 

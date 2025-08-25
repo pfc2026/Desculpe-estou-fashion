@@ -32,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $check_result = $check_stmt->get_result();
 
     if ($check_result->num_rows > 0) {
+        $check_stmt->close();
         header("Location: ../index7.html?error=email_exists");
         exit();
     }
@@ -41,8 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
 
     // Inserir novo usuário
-    $insert = "INSERT INTO usuarios (nome, email, senha_hash, data_cadastro) VALUES (?, ?, ?, NOW())";
-    $stmt = $conn->prepare($insert);
+    $insert_sql = "INSERT INTO usuarios (nome, email, senha_hash, data_cadastro) VALUES (?, ?, ?, NOW())";
+    $stmt = $conn->prepare($insert_sql);
     $stmt->bind_param("sss", $nome, $email, $senha_hash);
 
     if ($stmt->execute()) {
@@ -51,30 +52,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['nome'] = $nome;
         $_SESSION['email'] = $email;
 
-    header("Location: ../index2.html");
-    exit();
+        $stmt->close();
+        $conn->close();
+        header("Location: ../index2.html?status=success"); // Redireciona para a página de termos/sucesso
+        exit();
     } else {
-        header("Location: ../index7.html?error=db_error");
+        $stmt->close();
+        $conn->close();
+        header("Location: ../index7.html?error=db_error"); // Erro ao inserir no banco
         exit();
     }
-    $stmt->close();
-}
-
-$conn->close();
-?>
-
-if ($stmt->execute()) {
-    // Salva dados do usuário na sessão
-    $_SESSION['id_usuario'] = $stmt->insert_id;
-    $_SESSION['nome'] = $nome;
-    $_SESSION['email'] = $email;
-    header("Location: ../index2.html?status=success");
-    exit();
 } else {
-    header("Location: ../index7.html?status=error");
+    // Se o método não for POST, redireciona para a página de registro
+    header("Location: ../index7.html");
     exit();
 }
-
-$stmt->close();
-$conn->close();
 ?>

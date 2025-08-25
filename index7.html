@@ -166,7 +166,7 @@
                 <label for="senha">Senha</label>
                 <input type="password" id="senha" name="senha" placeholder="Crie uma senha forte" required minlength="8">
             </div>
-            <button type="submit" class="btn-submit">Criar Conta</button>
+            <button type="button" class="btn-submit" id="criarContaBtn">Criar Conta</button>
         </form>
         
         <p class="login-link">
@@ -186,6 +186,11 @@
         document.getElementById('status-message').textContent = msg[status];
         document.getElementById('status-message').style.color = status === 'success' ? '#28a745' : '#d9534f';
     }
+
+    // Redireciona para index2.html ao clicar em Criar Conta
+    document.getElementById('criarContaBtn').addEventListener('click', function() {
+        window.location.href = 'index2.html';
+    });
     </script>
 </body>
 </html>

@@ -1,22 +1,6 @@
--- --------------------------------------------------------
--- Servidor: 127.0.0.1
--- Versão do servidor: 10.4.28-MariaDB - mariadb.org binary distribution
--- OS do Servidor: Win64
--- HeidiSQL Versão: 12.5.0.6677
--- --------------------------------------------------------
 
--- --------------------------------------------------------
--- Configurações iniciais
--- --------------------------------------------------------
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = '+00:00';
-SET NAMES utf8mb4;
-
--- --------------------------------------------------------
--- Criação do banco de dados
--- --------------------------------------------------------
-DROP DATABASE IF EXISTS `desculpe_estou_fashion_db`;
-CREATE DATABASE IF NOT EXISTS `desculpe_estou_fashion_db` 
+-- Criar o banco de dados
+CREATE DATABASE IF NOT EXISTS `desculpe_estou_fashion_db`
 DEFAULT CHARACTER SET utf8mb4 
 COLLATE utf8mb4_unicode_ci;
 

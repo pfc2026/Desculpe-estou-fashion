@@ -31,17 +31,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['id_usuario'] = $row['id_usuario'];
             $_SESSION['nome'] = $row['nome'];
             $_SESSION['email'] = $row['email'];
-        $_SESSION['nome'] = $nome;
-        $_SESSION['email'] = $email;
-        header("Location: ../index3.html");
-        exit();
-    } else {
-        echo "Senha incorreta!";
+            
+            $stmt->close();
+            $conn->close();
+            header("Location: ../index3.html");
+            exit();
+        }
     }
-} else {
-    echo "Usuário não encontrado!";
-}
 
-$stmt->close();
-$conn->close();
+    // Se o script chegou aqui, o login falhou (usuário não encontrado ou senha incorreta)
+    $stmt->close();
+    $conn->close();
+    header("Location: ../index.html?error=invalid");
+    exit();
+} else {
+    // Se o método não for POST, redireciona para a página de login
+    header("Location: ../index.html");
+    exit();
+}
+// c:\xampp\htdocs\GitHub\Desculpe-estou-fashion\api\login.php
 ?>

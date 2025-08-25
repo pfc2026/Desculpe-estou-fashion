@@ -59,14 +59,14 @@
         <!-- CORREÇÃO: Div para a galeria de imagem (coluna esquerda) -->
         <div class="product-gallery">
             <!-- Substitua pelo caminho correto da sua imagem -->
-            <img src="compras/pagina de compras (1).png" alt="Camiseta Preta Basica">
+            <img src="compras/pagina de compras (1).png" alt="Camiseta Preta Basica" class="main-image">
         </div>
 
         <!-- CORREÇÃO: Div para os detalhes do produto (coluna direita) -->
         <div class="product-details">
             <div class="title-section">
                 <span class="tag-purple">Tendências</span>
-                <h1>Camiseta Preta Basica</h1>
+                <h1 class="product-title">Camiseta Preta Basica</h1>
                 <i class="fas fa-external-link-alt"></i>
             </div>
 
@@ -77,7 +77,7 @@
             </div>
 
             <div class="price-section">
-                <span class="current-price">49,90</span>
+                <span class="current-price price-value">49,90</span>
               <!--  <span class="original-price">R$143,95</span>-->
               <!--  <span class="discount-badge">-25%</span>-->
             </div>
@@ -123,13 +123,12 @@
                 </div>
             </div>
 
-        <a href="carrinho.html">    <div class="actions">
-                <button class="add-to-cart">
-                    ADICIONAR AO CARRINHO
-                  
-                </button>
-                <button class="wishlist"><i class="far fa-heart"></i></button>
-            </div></a>
+        <div class="actions">
+            <button class="add-to-cart" disabled>
+                ADICIONAR AO CARRINHO
+            </button>
+            <button class="wishlist"><i class="far fa-heart"></i></button>
+        </div>
             
             <p class="points-info">Ganhe até <strong>19 pontos SHEIN</strong> calculados no checkout.</p>
         </div>

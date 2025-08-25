@@ -94,9 +94,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // 1. Coletar todas as informações do produto
         const productName = document.querySelector('.product-title').textContent;
         const productPriceString = document.querySelector('.price-value').textContent;
-        const productPrice = parseFloat(productPriceString.replace('R$', '').replace(',', '.'));
-        const productImage = mainImage.src;
-        const selectedSize = document.querySelector('.size-buttons button.active').textContent;
+        const productPrice = parseFloat(productPriceString.replace(',', '.'));
+        const productImage = document.querySelector('.main-image').src;
+        const selectedSizeEl = document.querySelector('.size-buttons button.active');
+        
+        // Validação extra para garantir que o tamanho foi selecionado
+        if (!selectedSizeEl) {
+            alert('Por favor, selecione um tamanho.');
+            return;
+        }
+        const selectedSize = selectedSizeEl.textContent;
         
         // Gera um ID único para o item no carrinho (produto + tamanho)
         const itemId = `${productName}-${selectedSize}`;
@@ -129,11 +136,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Salva o carrinho atualizado de volta no localStorage
         localStorage.setItem('shoppingCart', JSON.stringify(cart));
 
-        // 4. Feedback ao usuário
+        // 4. Feedback ao usuário e redirecionamento
         alert(`"${product.name}" (Tamanho: ${product.size}) foi adicionado ao carrinho!`);
         
-        // Opcional: redirecionar para a página do carrinho
-        // window.location.href = 'carrinho.html';
+        // Redireciona para a página do carrinho
+        window.location.href = 'carrinho.html';
     });
 
     // Ação do botão de Wishlist (coração)
