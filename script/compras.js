@@ -91,18 +91,49 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Ação do botão "Adicionar ao Carrinho"
     addToCartButton.addEventListener('click', () => {
-        // Como o botão só está habilitado quando as seleções estão feitas, podemos pegar os valores com segurança
+        // 1. Coletar todas as informações do produto
+        const productName = document.querySelector('.product-title').textContent;
+        const productPriceString = document.querySelector('.price-value').textContent;
+        const productPrice = parseFloat(productPriceString.replace('R$', '').replace(',', '.'));
+        const productImage = mainImage.src;
         const selectedSize = document.querySelector('.size-buttons button.active').textContent;
-        const selectedColorElement = document.querySelector('.color-selector .swatch.active');
         
-        let selectedColorInfo = 'Não aplicável';
-        if (selectedColorElement) {
-            // Tenta pegar a cor do estilo, se não for uma imagem
-             selectedColorInfo = selectedColorElement.style.backgroundColor || 'Cor selecionada';
+        // Gera um ID único para o item no carrinho (produto + tamanho)
+        const itemId = `${productName}-${selectedSize}`;
+
+        // 2. Montar o objeto do produto
+        const product = {
+            id: itemId,
+            name: productName,
+            price: productPrice,
+            size: selectedSize,
+            image: productImage,
+            quantity: 1 // Começa com quantidade 1
+        };
+
+        // 3. Salvar no localStorage
+        // Pega o carrinho existente ou cria um array vazio
+        let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+
+        // Verifica se o item (mesmo produto e mesmo tamanho) já existe no carrinho
+        const existingItemIndex = cart.findIndex(item => item.id === itemId);
+
+        if (existingItemIndex > -1) {
+            // Se existir, apenas incrementa a quantidade
+            cart[existingItemIndex].quantity += 1;
+        } else {
+            // Se não existir, adiciona o novo produto ao carrinho
+            cart.push(product);
         }
 
-        // Exibe uma mensagem de confirmação para o usuário
-       // alert(`Produto adicionado ao carrinho!\nTamanho: ${selectedSize}\nCor: ${selectedColorInfo}`);
+        // Salva o carrinho atualizado de volta no localStorage
+        localStorage.setItem('shoppingCart', JSON.stringify(cart));
+
+        // 4. Feedback ao usuário
+        alert(`"${product.name}" (Tamanho: ${product.size}) foi adicionado ao carrinho!`);
+        
+        // Opcional: redirecionar para a página do carrinho
+        // window.location.href = 'carrinho.html';
     });
 
     // Ação do botão de Wishlist (coração)
