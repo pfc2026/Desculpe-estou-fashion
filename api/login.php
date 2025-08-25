@@ -1,23 +1,36 @@
 
 <?php
 session_start();
-include_once 'db_connect.php';
+require_once 'db_connect.php';
 
-$email = $_POST['email'] ?? '';
-$password = $_POST['password'] ?? '';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = trim($_POST['email'] ?? '');
+    $senha = trim($_POST['senha'] ?? '');
 
-$sql = "SELECT id_usuario, nome, senha_hash FROM Usuarios WHERE email = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $email);
-$stmt->execute();
-$stmt->store_result();
+    // Validar dados
+    if (empty($email) || empty($senha)) {
+        header("Location: ../index.html?error=empty");
+        exit();
+    }
 
-if ($stmt->num_rows > 0) {
-    $stmt->bind_result($id_usuario, $nome, $hashedPassword);
-    $stmt->fetch();
-    if (password_verify($password, $hashedPassword)) {
-        // Salva dados do usuário na sessão
-        $_SESSION['id_usuario'] = $id_usuario;
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        header("Location: ../index.html?error=invalid_email");
+        exit();
+    }
+
+    // Buscar usuário
+    $sql = "SELECT id_usuario, nome, email, senha_hash FROM usuarios WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($row = $result->fetch_assoc()) {
+        if (password_verify($senha, $row['senha_hash'])) {
+            // Login bem sucedido
+            $_SESSION['id_usuario'] = $row['id_usuario'];
+            $_SESSION['nome'] = $row['nome'];
+            $_SESSION['email'] = $row['email'];
         $_SESSION['nome'] = $nome;
         $_SESSION['email'] = $email;
         header("Location: ../index3.html");

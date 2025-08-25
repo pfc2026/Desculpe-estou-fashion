@@ -1,0 +1,26 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+# Permitir todos os métodos HTTP para os arquivos PHP
+<FilesMatch "\.php$">
+    <LimitExcept GET POST PUT DELETE>
+        Order deny,allow
+        Allow from all
+    </LimitExcept>
+</FilesMatch>
+
+# Permitir acesso apenas aos arquivos PHP específicos
+<Files "registrar.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files "login.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+<Files "db_connect.php">
+    Order Allow,Deny
+    Allow from all
+</Files>

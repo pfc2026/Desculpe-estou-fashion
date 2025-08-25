@@ -120,6 +120,30 @@
             }
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            const statusMessage = document.getElementById('status-message');
+
+            if (error) {
+                switch(error) {
+                    case 'empty':
+                        statusMessage.textContent = 'Por favor, preencha todos os campos.';
+                        break;
+                    case 'invalid_email':
+                        statusMessage.textContent = 'Por favor, insira um email válido.';
+                        break;
+                    case 'email_exists':
+                        statusMessage.textContent = 'Este email já está cadastrado.';
+                        break;
+                    case 'db_error':
+                        statusMessage.textContent = 'Erro ao cadastrar. Por favor, tente novamente.';
+                        break;
+                }
+            }
+        });
+    </script>
 </head>
 <body>
 
@@ -129,10 +153,10 @@
         <!-- Mensagem de status -->
         <div id="status-message" style="text-align:center; margin-bottom:1rem; color:#d9534f; font-weight:bold;"></div>
 
-    <form action="api/registrar.php" method="post">
+    <form action="/Desculpe-estou-fashion/api/registrar.php" method="POST">
             <div class="form-group">
                 <label for="nome">Nome Completo</label>
-                <input type="text" id="nome" name="name" placeholder="Digite seu nome completo" required>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
             </div>
             <div class="form-group">
                 <label for="email">E-mail</label>
@@ -140,7 +164,7 @@
             </div>
             <div class="form-group">
                 <label for="senha">Senha</label>
-                <input type="password" id="senha" name="password" placeholder="Crie uma senha forte" required minlength="8">
+                <input type="password" id="senha" name="senha" placeholder="Crie uma senha forte" required minlength="8">
             </div>
             <button type="submit" class="btn-submit">Criar Conta</button>
         </form>

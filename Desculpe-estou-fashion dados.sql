@@ -5,21 +5,26 @@
 -- HeidiSQL Versão: 12.5.0.6677
 -- --------------------------------------------------------
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+-- --------------------------------------------------------
+-- Configurações iniciais
+-- --------------------------------------------------------
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = '+00:00';
+SET NAMES utf8mb4;
 
+-- --------------------------------------------------------
+-- Criação do banco de dados
+-- --------------------------------------------------------
+DROP DATABASE IF EXISTS `desculpe_estou_fashion_db`;
+CREATE DATABASE IF NOT EXISTS `desculpe_estou_fashion_db` 
+DEFAULT CHARACTER SET utf8mb4 
+COLLATE utf8mb4_unicode_ci;
 
--- Copiando estrutura do banco de dados para desculpe_estou_fashion_db
-CREATE DATABASE IF NOT EXISTS `desculpe_estou_fashion_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `desculpe_estou_fashion_db`;
 
--- Copiando estrutura para tabela desculpe_estou_fashion_db.carrinho
+-- --------------------------------------------------------
+-- Estrutura das tabelas
+-- --------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `carrinho` (
   `id_carrinho` int(11) NOT NULL AUTO_INCREMENT,
   `id_usuario` int(11) NOT NULL,
@@ -150,16 +155,30 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `email` varchar(100) NOT NULL,
   `senha_hash` varchar(255) NOT NULL,
   `data_cadastro` datetime DEFAULT current_timestamp(),
+  `ultimo_login` datetime DEFAULT NULL,
+  `ativo` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id_usuario`),
-  UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  UNIQUE KEY `email` (`email`),
+  KEY `idx_usuarios_status` (`ativo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Copiando dados para a tabela desculpe_estou_fashion_db.usuarios: ~1 rows (aproximadamente)
 INSERT INTO `usuarios` (`id_usuario`, `nome`, `email`, `senha_hash`, `data_cadastro`) VALUES
-	(1, 'Luiz', 'luiz@gmail.com', '$2y$10$H9gL3q8zN4iJ5kO6/..fA.xY.Z/1b.2c.3d.4e.5f', '2025-08-18 14:30:00');
+	(1, 'Admin', 'admin@desculpeestoufashion.com', '$2y$10$' || MD5(RANDOM()::TEXT), CURRENT_TIMESTAMP);
 
-/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
+-- --------------------------------------------------------
+-- Criação de índices adicionais para melhor performance
+-- --------------------------------------------------------
+
+-- Índice para busca rápida de produtos por preço
+CREATE INDEX IF NOT EXISTS `idx_produtos_preco` ON `produtos` (`preco`);
+
+-- Índice para busca rápida de pedidos por data
+CREATE INDEX IF NOT EXISTS `idx_pedidos_data` ON `pedidos` (`data_pedido`);
+
+-- --------------------------------------------------------
+-- Configurações finais
+-- --------------------------------------------------------
+SET FOREIGN_KEY_CHECKS = 1;
+SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT;
+SET SQL_MODE = @OLD_SQL_MODE;
