@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS Categorias (
 
 CREATE TABLE IF NOT EXISTS Tamanhos (
     id_tamanho INT AUTO_INCREMENT PRIMARY KEY,
-    descricao VARCHAR(20) NOT NULL UNIQUE
+    descricao VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Produtos (
@@ -67,7 +67,7 @@ CREATE INDEX idx_usuario_email ON Usuarios(email);
 
 INSERT INTO Categorias (nome) VALUES ('Camisetas'), ('Calças'), ('Vestidos'), ('Casacos');
 
-INSERT INTO Tamanhos (descricao) VALUES ('2 anos'), ('4 anos'), ('6 anos'), ('8 anos');
+INSERT INTO Tamanhos (descricao) VALUES ('P'), ('M'), ('G'), ('GG');
 
 INSERT INTO Produtos (nome, descricao, preco, id_categoria, imagem_url) VALUES
 ('Camiseta Básica Preta Masculina', 'camiseta básica Preta masculina', 49.90, 1, 'compras/pagina de compras (1).png'),
