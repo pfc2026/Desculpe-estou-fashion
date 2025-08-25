@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu Hamburguer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .menu-hamburguer {
+      width: 40px;
+      height: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      margin: 20px;
+    }
+    .bar {
+      height: 5px;
+      width: 100%;
+      background-color: #333;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+    .menu-list {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 10px 0;
+      min-width: 160px;
+      z-index: 100;
+    }
+    .menu-list.show {
+      display: block;
+    }
+    .menu-list li {
+      list-style: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .menu-list li:hover {
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-hamburguer" id="menuBtn" aria-label="Abrir menu" tabindex="0">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <ul class="menu-list" id="menuList">
+    <li>Contato</li>
+    <li>Recomendados</li>
+    <li>Configurações</li>
+  </ul>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const menuList = document.getElementById('menuList');
+
+    function toggleMenu() {
+      menuList.classList.toggle('show');
+    }
+
+    menuBtn.addEventListener('click', toggleMenu);
+    menuBtn.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        toggleMenu();
+      }
+    });
+
+    // Fecha o menu ao clicar fora
+    document.addEventListener('click', function(e) {
+      if (!menuBtn.contains(e.target) && !menuList.contains(e.target)) {
+        menuList.classList.remove('show');
+      }
+    });
