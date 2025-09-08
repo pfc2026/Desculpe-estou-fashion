@@ -1,8 +1,6 @@
 
 -- Criar o banco de dados
 CREATE DATABASE IF NOT EXISTS `desculpe_estou_fashion_db`
-DEFAULT CHARACTER SET utf8mb4 
-COLLATE utf8mb4_unicode_ci;
 
 USE `desculpe_estou_fashion_db`;
 
@@ -137,10 +135,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `senha_hash` varchar(255) NOT NULL,
-  `data_cadastro` datetime DEFAULT current_timestamp(),
-  `ultimo_login` datetime DEFAULT NULL,
-  `ativo` tinyint(1) NOT NULL DEFAULT 1,
+  'senha' varchar(255) NOT NULL,
+
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `email` (`email`),
   KEY `idx_usuarios_status` (`ativo`)
@@ -166,3 +162,4 @@ CREATE INDEX IF NOT EXISTS `idx_pedidos_data` ON `pedidos` (`data_pedido`);
 SET FOREIGN_KEY_CHECKS = 1;
 SET CHARACTER_SET_CLIENT = @OLD_CHARACTER_SET_CLIENT;
 SET SQL_MODE = @OLD_SQL_MODE;
+
