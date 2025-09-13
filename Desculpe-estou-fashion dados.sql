@@ -111,7 +111,8 @@ INSERT INTO `produtos` (`id_produto`, `nome`, `descricao`, `preco`, `id_categori
 	(1, 'Calça Jeans Masculina', 'Calça jeans de alta qualidade e conforto.', 99.90, 1, 'compras/pagina de compras (2).png', '2025-08-18 15:00:00'),
 	(2, 'Camisa Xadrez Masculina', 'Camisa xadrez estilosa para todas as ocasiões.', 79.90, 1, 'compras/pagina de compras (5).png', '2025-08-18 15:00:00'),
 	(3, 'Camiseta Preta Basica', 'Camiseta básica preta, essencial no guarda-roupa.', 49.90, 1, 'compras/pagina de compras (1).png', '2025-08-18 15:00:00'),
-	(4, 'Sunga Branca', 'Sunga branca para aproveitar o verão.', 39.90, 1, 'compras/pagina de compras (6).png', '2025-08-18 15:00:00'),
+	(4, 'Sunga 
+  Branca', 'Sunga branca para aproveitar o verão.', 39.90, 1, 'compras/pagina de compras (6).png', '2025-08-18 15:00:00'),
 	(5, 'Macacão Feminino', 'Macacão florido, leve e elegante.', 85.50, 2, 'compras/pagina de compras (3).png', '2025-08-18 15:00:00'),
 	(6, 'Vestido Verde Vintage', 'Vestido verde com um toque vintage e charmoso.', 120.00, 2, 'compras/pagina de compras (4).png', '2025-08-18 15:00:00');
 
