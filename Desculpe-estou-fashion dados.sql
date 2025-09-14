@@ -1,12 +1,23 @@
 
--- Criar o banco de dados
-CREATE DATABASE IF NOT EXISTS `desculpe_estou_fashion_db`
+-- Criar e usar o banco de dados
+DROP DATABASE IF EXISTS `desculpe_estou_fashion_db`;
+CREATE DATABASE `desculpe_estou_fashion_db` 
+DEFAULT CHARACTER SET utf8mb4 
+COLLATE utf8mb4_unicode_ci;
 
 USE `desculpe_estou_fashion_db`;
 
--- --------------------------------------------------------
--- Estrutura das tabelas
--- --------------------------------------------------------
+-- Tabela de usuários (base do sistema)
+CREATE TABLE `usuarios` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `senha_hash` varchar(255) NOT NULL,
+  `data_cadastro` datetime DEFAULT CURRENT_TIMESTAMP,
+  `ultimo_login` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 CREATE TABLE IF NOT EXISTS `carrinho` (
   `id_carrinho` int(11) NOT NULL AUTO_INCREMENT,
   `id_usuario` int(11) NOT NULL,

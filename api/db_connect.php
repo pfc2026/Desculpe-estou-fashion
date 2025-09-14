@@ -4,7 +4,7 @@
 $servername = "localhost";
 $username = "root"; // usuário padrão do XAMPP
 $password = ""; // senha padrão do XAMPP (vazia)
-$dbname = "desculpe-estou-fashion dados.sql";
+$dbname = "desculpe_estou_fashion_db";
 
 
 $conn = new mysqli($servername, $username, $password, $dbname);

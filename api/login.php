@@ -32,7 +32,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['nome'] = $row['nome'];
             $_SESSION['email'] = $row['email'];
             
+            // Atualizar último login do usuário
+            $update_sql = "UPDATE usuarios SET ultimo_login = CURRENT_TIMESTAMP WHERE id_usuario = ?";
+            $update_stmt = $conn->prepare($update_sql);
+            $update_stmt->bind_param("i", $row['id_usuario']);
+            $update_stmt->execute();
+            
+            // Registrar o login
+            $ip = $_SERVER['REMOTE_ADDR'];
+            $user_agent = $_SERVER['HTTP_USER_AGENT'];
+            $log_sql = "INSERT INTO registro_login (id_usuario, ip, user_agent, sucesso) VALUES (?, ?, ?, 1)";
+            $log_stmt = $conn->prepare($log_sql);
+            $log_stmt->bind_param("iss", $row['id_usuario'], $ip, $user_agent);
+            $log_stmt->execute();
+            
             $stmt->close();
+            $update_stmt->close();
+            $log_stmt->close();
             $conn->close();
             header("Location: ../index3.html");
             exit();
@@ -40,6 +56,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Se o script chegou aqui, o login falhou (usuário não encontrado ou senha incorreta)
+    if ($row) {
+        // Registrar tentativa falha de login (usuário existe mas senha errada)
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+        $log_sql = "INSERT INTO registro_login (id_usuario, ip, user_agent, sucesso) VALUES (?, ?, ?, 0)";
+        $log_stmt = $conn->prepare($log_sql);
+        $log_stmt->bind_param("iss", $row['id_usuario'], $ip, $user_agent);
+        $log_stmt->execute();
+        $log_stmt->close();
+    }
+    
     $stmt->close();
     $conn->close();
     header("Location: ../index.html?error=invalid");
