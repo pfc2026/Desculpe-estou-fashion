@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Desculpe, estou fashion</title>
+    <link rel="stylesheet" href="css/painel.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="compras/logo.png" alt="Logo">
+                <h1>Painel Administrativo</h1>
+            </div>
+            <div class="user-info">
+                <span id="admin-name">Admin</span>
+                <button id="logout-btn">Sair</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="dashboard">
+            <aside class="sidebar">
+                <button class="tab-btn active" data-tab="produtos">Produtos</button>
+                <button class="tab-btn" data-tab="categorias">Categorias</button>
+                <button class="tab-btn" data-tab="estoque">Estoque</button>
+                <button class="tab-btn" data-tab="pedidos">Pedidos</button>
+            </aside>
+
+            <section class="content">
+                <!-- Seção de Produtos -->
+                <div class="tab-content active" id="produtos">
+                    <div class="actions">
+                        <h2>Gerenciar Produtos</h2>
+                        <button id="add-produto-btn" class="btn-primary">Adicionar Novo Produto</button>
+                    </div>
+                    
+                    <div class="search-bar">
+                        <input type="text" id="search-produtos" placeholder="Buscar produtos...">
+                    </div>
+
+                    <div class="products-grid" id="products-container">
+                        <!-- Produtos serão inseridos aqui via JavaScript -->
+                    </div>
+
+                    <!-- Modal Adicionar/Editar Produto -->
+                    <div class="modal" id="produto-modal">
+                        <div class="modal-content">
+                            <span class="close-btn">&times;</span>
+                            <h3 id="modal-title">Adicionar Produto</h3>
+                            <form id="produto-form">
+                                <div class="form-group">
+                                    <label for="nome">Nome do Produto:</label>
+                                    <input type="text" id="nome" name="nome" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="descricao">Descrição:</label>
+                                    <textarea id="descricao" name="descricao" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="preco">Preço:</label>
+                                    <input type="number" id="preco" name="preco" step="0.01" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="categoria">Categoria:</label>
+                                    <select id="categoria" name="categoria" required>
+                                        <option value="1">Masculino</option>
+                                        <option value="2">Feminino</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="imagem">Imagem:</label>
+                                    <input type="file" id="imagem" name="imagem" accept="image/*">
+                                    <div id="preview-imagem" class="image-preview"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Tamanhos disponíveis:</label>
+                                    <div class="tamanhos-grid">
+                                        <label><input type="checkbox" name="tamanhos" value="P"> P</label>
+                                        <label><input type="checkbox" name="tamanhos" value="M"> M</label>
+                                        <label><input type="checkbox" name="tamanhos" value="G"> G</label>
+                                        <label><input type="checkbox" name="tamanhos" value="Único"> Único</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-primary">Salvar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de Categorias -->
+                <div class="tab-content" id="categorias">
+                    <h2>Gerenciar Categorias</h2>
+                    <div id="categorias-container">
+                        <!-- Categorias serão inseridas aqui via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Seção de Estoque -->
+                <div class="tab-content" id="estoque">
+                    <h2>Controle de Estoque</h2>
+                    <div id="estoque-container">
+                        <!-- Dados do estoque serão inseridos aqui via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Seção de Pedidos -->
+                <div class="tab-content" id="pedidos">
+                    <h2>Gerenciar Pedidos</h2>
+                    <div id="pedidos-container">
+                        <!-- Pedidos serão inseridos aqui via JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script/painel.js"></script>
+</body>
+</html>
