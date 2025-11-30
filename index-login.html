@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Estou Fashion</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* MODIFICAÇÃO 1: Fundo do container de login alterado para rosa claro */
+        .login-container {
+            background-color: #fff; /* Tom de rosa claro */
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Estilo para o botão de login quando ele estiver desabilitado */
+        .login-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        /* Estilo para o botão 'Criar conta' */
+        .create-account-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background-color: #ffb7db;
+            color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .create-account-button:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const error = urlParams.get('error');
+            
+            if (error) {
+                const errorMessage = document.createElement('div');
+                errorMessage.style.color = '#d9534f';
+                errorMessage.style.marginBottom = '1rem';
+                errorMessage.style.textAlign = 'center';
+                errorMessage.style.fontWeight = 'bold';
+
+                switch(error) {
+                    case 'empty':
+                        errorMessage.textContent = 'Por favor, preencha todos os campos.';
+                        break;
+                    case 'invalid_email':
+                        errorMessage.textContent = 'Por favor, insira um email válido.';
+                        break;
+                    case 'invalid':
+                        errorMessage.textContent = 'Email ou senha incorretos.';
+                        break;
+                }
+
+                const loginForm = document.getElementById('loginForm');
+                loginForm.parentNode.insertBefore(errorMessage, loginForm);
+            }
+        });
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <span class="site-title">Desculpe, Estou Fashion</span>
+    </header>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        <form id="loginForm" action="api/login.php" method="POST">
+            <div class="input-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required placeholder="seuemail@exemplo.com">
+            </div>
+            <div class="input-group">
+                <label for="senha">Senha:</label>
+                <div class="password-wrapper">
+                    <input type="password" id="senha" name="senha" required placeholder="Sua senha">
+                    <span class="toggle-password" id="togglePassword"></span>
+                </div>
+            </div>
+            
+            <button type="submit" id="loginButton" class="login-button">Login</button>
+        </form>
+        <a href="index2.html" class="terms-link">Termos e Condições</a>
+        
+        <!-- MODIFICAÇÃO 2: Link do botão alterado para index7.html -->
+        <a href="index7.html" class="create-account-button">Criar conta</a>
+    </div>
+
+    <!-- SCRIPT para habilitar/desabilitar o botão de login -->
+    <script>
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const loginButton = document.getElementById('loginButton');
+
+        function checkInputs() {
+            const isFormValid = emailInput.value.trim() !== '' && passwordInput.value.trim() !== '';
+            loginButton.disabled = !isFormValid;
+        }
+
+        emailInput.addEventListener('input', checkInputs);
+        passwordInput.addEventListener('input', checkInputs);
+    </script>
+</body>
+</html>

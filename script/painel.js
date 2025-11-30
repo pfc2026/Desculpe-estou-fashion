@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Funções para carregar dados
     async function loadProdutos() {
         try {
-            const response = await fetch('api/listar_produtos.php');
+            const response = await fetch('/api/products');
             const produtos = await response.json();
             displayProdutos(produtos);
         } catch (error) {
@@ -68,19 +68,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const card = document.createElement('div');
         card.className = 'product-card';
         card.innerHTML = `
-            <img src="${produto.imagem_url}" alt="${produto.nome}">
+            <img src="${(produto.imagens && produto.imagens[0]) || '/public/uploads/.gitkeep'}" alt="${produto.nome}">
             <h3>${produto.nome}</h3>
             <p>${produto.descricao}</p>
-            <p class="price">R$ ${produto.preco.toFixed(2)}</p>
+            <p class="price">R$ ${Number(produto.preco || 0).toFixed(2)}</p>
             <div class="card-actions">
-                <button class="btn-edit" data-id="${produto.id_produto}">Editar</button>
-                <button class="btn-delete" data-id="${produto.id_produto}">Excluir</button>
+                <button class="btn-edit" data-id="${produto._id}">Editar</button>
+                <button class="btn-delete" data-id="${produto._id}">Excluir</button>
             </div>
         `;
 
         // Adiciona event listeners para editar e excluir
         card.querySelector('.btn-edit').addEventListener('click', () => editProduto(produto));
-        card.querySelector('.btn-delete').addEventListener('click', () => deleteProduto(produto.id_produto));
+        card.querySelector('.btn-delete').addEventListener('click', () => deleteProduto(produto._id));
 
         return card;
     }
@@ -91,6 +91,16 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('modal-title').textContent = 'Adicionar Produto';
         modal.style.display = 'block';
     });
+
+    // Floating add button (in header)
+    const addFloatingBtn = document.getElementById('add-produto-floating-btn');
+    if (addFloatingBtn) {
+        addFloatingBtn.addEventListener('click', () => {
+            clearProdutoForm();
+            document.getElementById('modal-title').textContent = 'Adicionar Produto';
+            modal.style.display = 'block';
+        });
+    }
 
     closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
@@ -127,19 +137,28 @@ document.addEventListener('DOMContentLoaded', function() {
     produtoForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const formData = new FormData(produtoForm);
-        
         try {
-            const response = await fetch('api/salvar_produto.php', {
-                method: 'POST',
+            // determine if editing or creating
+            const editingId = produtoForm.dataset.editingId;
+            let url = '/api/products';
+            let method = 'POST';
+            if (editingId) {
+                url = `/api/products/${editingId}`;
+                method = 'PUT';
+            }
+
+            const response = await fetch(url, {
+                method,
                 body: formData
             });
-            
+
             const result = await response.json();
-            if (result.success) {
+            if (result.success || result.id || result.modifiedCount >= 0) {
                 modal.style.display = 'none';
+                produtoForm.removeAttribute('data-editing-id');
                 loadProdutos(); // Recarrega a lista de produtos
             } else {
-                alert('Erro ao salvar produto: ' + result.message);
+                alert('Erro ao salvar produto: ' + (result.message || 'erro desconhecido'));
             }
         } catch (error) {
             console.error('Erro ao salvar produto:', error);
@@ -157,14 +176,14 @@ document.addEventListener('DOMContentLoaded', function() {
     async function deleteProduto(id) {
         if (confirm('Tem certeza que deseja excluir este produto?')) {
             try {
-                const response = await fetch(`api/excluir_produto.php?id=${id}`, {
+                const response = await fetch(`/api/products/${id}`, {
                     method: 'DELETE'
                 });
                 const result = await response.json();
                 if (result.success) {
                     loadProdutos(); // Recarrega a lista de produtos
                 } else {
-                    alert('Erro ao excluir produto: ' + result.message);
+                    alert('Erro ao excluir produto: ' + (result.message || 'erro desconhecido'));
                 }
             } catch (error) {
                 console.error('Erro ao excluir produto:', error);
@@ -184,10 +203,12 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('descricao').value = produto.descricao;
         document.getElementById('preco').value = produto.preco;
         document.getElementById('categoria').value = produto.id_categoria;
-        
-        if (produto.imagem_url) {
+        // store editing id on form
+        produtoForm.dataset.editingId = produto._id;
+
+        if (produto.imagens && produto.imagens.length) {
             const img = document.createElement('img');
-            img.src = produto.imagem_url;
+            img.src = produto.imagens[0];
             img.style.maxWidth = '100%';
             img.style.maxHeight = '100%';
             previewImagem.innerHTML = '';
@@ -215,7 +236,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função de logout
     logoutBtn.addEventListener('click', async () => {
         try {
-            const response = await fetch('api/logout.php');
+            // if your logout remains PHP based, keep it. Otherwise implement new API.
+            const response = await fetch('/api/logout.php');
             const result = await response.json();
             if (result.success) {
                 window.location.href = 'index3.html';

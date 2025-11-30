@@ -1,0 +1,56 @@
+<div class="promo-bar">
+    <div class="promo-item"> <i class="fas fa-tags"></i> <span>Vendas Ecológicas</span> </div>
+    <div class="promo-item"> <i class="fas fa-truck"></i> <span>Frete Grátis</span> </div>
+    <div class="promo-item"> <i class="fas fa-undo-alt"></i> <span>Devolução Grátis</span> </div>
+</div>
+
+<div class="product-categories">
+    <h2>Produtos em Destaque</h2>
+    <div class="product-list">
+        <% if (products && products.length > 0) { %>
+            <% products.forEach(product => { %>
+                <div class="product-item">
+                    <a href="/produto/<%= product._id %>">
+                        <img src="<%= product.imagens && product.imagens[0] ? product.imagens[0] : 'compras/pagina de compras (1).png' %>" alt="<%= product.nome %>">
+                        <span class="price">R$ <%= Number(product.preco || 0).toFixed(2) %></span>
+                        <p class="description"><%= product.nome %> <%= product.descricao ? ('- ' + product.descricao) : '' %></p>
+                        <p class="gender"><%= product.categoria %></p>
+                    </a>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>Nenhum produto disponível no momento.</p>
+        <% } %>
+    </div>
+</div>
+
+<div class="subscription-payment">
+    <div class="subscription">
+        <h3>Encontre-nos</h3>
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <a href="#" style="color: #333;"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" style="color: #333;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color: #333;"><i class="fab fa-twitter"></i></a>
+            <a href="#" style="color: #333;"><i class="fab fa-pinterest"></i></a>
+            <a href="#" style="color: #333;"><i class="fab fa-tiktok"></i></a>
+        </div>
+        <p style="margin-top: 15px; font-size: 0.8em;">Cadastre-se para receber notícias sobre Desculpe, Estou Fashion.</p>
+        <form class="subscription-form">
+            <input type="tel" placeholder="DDD + Telefone">
+            <button type="submit">subscribe</button>
+        </form>
+        <form class="subscription-form" style="margin-top: 10px;">
+            <input type="email" placeholder="Endereço do seu e-mail">
+            <button type="submit">Inscreva-se</button>
+        </form>
+    </div>
+    <div class="payment-methods">
+        <h3>Formas de Pagamento</h3>
+        <div class="payment-icons">
+            <img src="https://via.placeholder.com/50/4169E1/FFFFFF?Text=VISA" alt="Visa">
+            <img src="https://via.placeholder.com/50/FF69B4/FFFFFF?Text=MASTERCARD" alt="Mastercard">
+            <img src="https://via.placeholder.com/50/008000/FFFFFF?Text=PIX" alt="PIX">
+            <img src="https://via.placeholder.com/50/FFA500/FFFFFF?Text=BOLETO" alt="Boleto">
+        </div>
+    </div>
+</div>

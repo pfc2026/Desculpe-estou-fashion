@@ -90,14 +90,40 @@ body {
     cursor: pointer;
 }
 
-/* Product Grid */
-.product-grid-container {
+/* Promo Bar */
+.promo-bar {
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.promo-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Product Categories */
+.product-categories {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-categories h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.product-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    padding: 20px;
     gap: 20px;
-    max-width: 1200px;
-    margin: 20px auto;
 }
 
 .product-item {
@@ -106,11 +132,23 @@ body {
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.product-item a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .product-item img {
     width: 100%;
-    height: auto;
+    height: 200px;
+    object-fit: cover;
     display: block;
 }
 
@@ -119,35 +157,76 @@ body {
     font-weight: bold;
     color: #e64980;
     text-align: center;
+    font-size: 1.1em;
 }
 
-.discount {
-    padding: 5px 10px;
-    color: #777;
+.description {
+    padding: 0 10px;
     text-align: center;
+    color: #555;
     font-size: 0.9em;
+    margin: 5px 0;
 }
 
-/* Featured Product */
-.product-item.featured {
-    grid-column: 1 / -1; /* Occupies the entire width */
+.gender {
+    padding: 0 10px 10px;
+    text-align: center;
+    color: #777;
+    font-size: 0.8em;
+    text-transform: uppercase;
 }
 
-.product-item.featured img {
-    border-radius: 8px;
+/* Subscription and Payment */
+.subscription-payment {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
 }
 
-.offer-label {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background-color: #ff6b6b;
+.subscription, .payment-methods {
+    flex: 1;
+}
+
+.subscription h3, .payment-methods h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.subscription-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.subscription-form input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.subscription-form button {
+    padding: 8px 15px;
+    background-color: #e64980;
     color: white;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 0.9em;
-    font-weight: bold;
-    z-index: 10;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.payment-icons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.payment-icons img {
+    width: 50px;
+    height: 30px;
+    object-fit: contain;
 }
 
 /* Footer */
