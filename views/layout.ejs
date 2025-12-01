@@ -44,5 +44,48 @@
     </footer>
 
     <script src="script/load_products.js"></script>
+    <script>
+        // Cart functionality
+        function getCart() {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function addToCart(productId, name, price, image) {
+            const cart = getCart();
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: name,
+                    price: parseFloat(price),
+                    image: image,
+                    quantity: 1
+                });
+            }
+
+            saveCart(cart);
+            alert('Produto adicionado ao carrinho!');
+        }
+
+        // Handle add to cart button clicks
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('add-to-cart')) {
+                const button = e.target;
+                const productId = button.dataset.productId;
+                const productName = button.dataset.productName;
+                const productPrice = button.dataset.productPrice;
+                const productImage = button.dataset.productImage;
+
+                addToCart(productId, productName, productPrice, productImage);
+            }
+        });
+    </script>
 </body>
 </html>

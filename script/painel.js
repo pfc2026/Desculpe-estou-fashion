@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const produtoForm = document.getElementById('produto-form');
     const searchInput = document.getElementById('search-produtos');
     const logoutBtn = document.getElementById('logout-btn');
+    const goMasculinoBtn = document.getElementById('go-masculino-btn');
+    const goFemininoBtn = document.getElementById('go-feminino-btn');
 
     // Gerenciamento de abas
     tabBtns.forEach(btn => {
@@ -46,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Funções para carregar dados
     async function loadProdutos() {
         try {
-            const response = await fetch('/api/products');
+            const response = await fetch('http://localhost:3000/api/products');
             const produtos = await response.json();
             displayProdutos(produtos);
         } catch (error) {
@@ -55,9 +57,42 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function loadCategorias() {
-        // Placeholder for categories
-        const categoriasContainer = document.getElementById('categorias-container');
-        categoriasContainer.innerHTML = '<p>Categorias: Masculino, Feminino</p>';
+        try {
+            const response = await fetch('http://localhost:3000/api/products');
+            const produtos = await response.json();
+
+            const categoriasContainer = document.getElementById('categorias-container');
+            categoriasContainer.innerHTML = '';
+
+            const categorias = {};
+            produtos.forEach(produto => {
+                if (!categorias[produto.categoria]) {
+                    categorias[produto.categoria] = [];
+                }
+                categorias[produto.categoria].push(produto);
+            });
+
+            for (const [categoria, produtosCategoria] of Object.entries(categorias)) {
+                const categoriaDiv = document.createElement('div');
+                categoriaDiv.className = 'categoria-section';
+                categoriaDiv.innerHTML = `<h3>${categoria}</h3>`;
+
+                const produtosGrid = document.createElement('div');
+                produtosGrid.className = 'products-grid';
+
+                produtosCategoria.forEach(produto => {
+                    const card = createProdutoCard(produto);
+                    produtosGrid.appendChild(card);
+                });
+
+                categoriaDiv.appendChild(produtosGrid);
+                categoriasContainer.appendChild(categoriaDiv);
+            }
+        } catch (error) {
+            console.error('Erro ao carregar categorias:', error);
+            const categoriasContainer = document.getElementById('categorias-container');
+            categoriasContainer.innerHTML = '<p>Erro ao carregar categorias.</p>';
+        }
     }
 
     async function loadEstoque() {
@@ -158,10 +193,10 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             // determine if editing or creating
             const editingId = produtoForm.dataset.editingId;
-            let url = '/api/products';
+            let url = 'http://localhost:3000/api/products';
             let method = 'POST';
             if (editingId) {
-                url = `/api/products/${editingId}`;
+                url = `http://localhost:3000/api/products/${editingId}`;
                 method = 'PUT';
             }
 
@@ -194,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
     async function deleteProduto(id) {
         if (confirm('Tem certeza que deseja excluir este produto?')) {
             try {
-                const response = await fetch(`/api/products/${id}`, {
+                const response = await fetch(`http://localhost:3000/api/products/${id}`, {
                     method: 'DELETE'
                 });
                 const result = await response.json();
@@ -263,6 +298,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função de logout
     logoutBtn.addEventListener('click', () => {
         window.location.href = 'index.html';
+    });
+
+    // Funções para navegar para páginas de categoria
+    goMasculinoBtn.addEventListener('click', () => {
+        window.open('http://localhost:3000/masculino.html?t=' + Date.now(), '_blank');
+    });
+
+    goFemininoBtn.addEventListener('click', () => {
+        window.open('http://localhost:3000/feminino.html?t=' + Date.now(), '_blank');
     });
 
     // Utilidade

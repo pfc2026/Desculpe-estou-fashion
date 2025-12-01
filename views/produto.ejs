@@ -55,7 +55,7 @@
         </div>
 
         <div class="actions">
-            <button class="add-to-cart">
+            <button class="add-to-cart" data-product-id="<%= product._id %>" data-product-name="<%= product.nome %>" data-product-price="<%= product.preco %>" data-product-image="<%= product.imagens && product.imagens[0] ? product.imagens[0] : 'compras/pagina de compras (1).png' %>">
                 ADICIONAR AO CARRINHO
             </button>
             <button class="wishlist"><i class="far fa-heart"></i></button>

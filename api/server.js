@@ -2,6 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const session = require('express-session');
+const bcrypt = require('bcryptjs');
 const { connect } = require('./mongo_connect');
 
 const productsRouter = require('./products');
@@ -10,6 +12,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Session configuration
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'your-secret-key',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false } // Set to true in production with HTTPS
+}));
 
 // Set EJS as template engine
 app.set('view engine', 'ejs');
@@ -210,6 +220,79 @@ app.get('/', async (req, res) => {
     // Fallback to static page if DB fails
     res.sendFile(path.join(__dirname, '..', 'index3.html'));
   }
+});
+
+// Authentication routes
+app.post('/api/login', async (req, res) => {
+  try {
+    const { email, senha } = req.body;
+    if (!email || !senha) {
+      return res.redirect('/index-login.html?error=empty');
+    }
+
+    const db = await connect();
+    const user = await db.collection('users').findOne({ email });
+
+    if (!user) {
+      return res.redirect('/index-login.html?error=invalid');
+    }
+
+    const isValidPassword = await bcrypt.compare(senha, user.password);
+    if (!isValidPassword) {
+      return res.redirect('/index-login.html?error=invalid');
+    }
+
+    req.session.user = { id: user._id, nome: user.nome, email: user.email };
+    res.redirect('/index3.html'); // Redirect to recommended area
+  } catch (err) {
+    console.error(err);
+    res.redirect('/index-login.html?error=invalid');
+  }
+});
+
+app.post('/api/register', async (req, res) => {
+  try {
+    const { nome, email, senha } = req.body;
+    if (!nome || !email || !senha) {
+      return res.redirect('/index7.html?error=empty');
+    }
+
+    const db = await connect();
+    const existingUser = await db.collection('users').findOne({ email });
+    if (existingUser) {
+      return res.redirect('/index7.html?error=email_exists');
+    }
+
+    const hashedPassword = await bcrypt.hash(senha, 10);
+    await db.collection('users').insertOne({
+      nome,
+      email,
+      password: hashedPassword,
+      createdAt: new Date()
+    });
+
+    res.redirect('/index-login.html?status=success');
+  } catch (err) {
+    console.error(err);
+    res.redirect('/index7.html?error=db_error');
+  }
+});
+
+app.post('/api/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error(err);
+    }
+    res.redirect('/');
+  });
+});
+
+// Contact form submission
+app.post('/api/contact', (req, res) => {
+  const { nome, email, mensagem } = req.body;
+  console.log('Nova mensagem de contato:', { nome, email, mensagem });
+  // In a real app, you'd save this to database or send email
+  res.json({ success: true, message: 'Mensagem enviada com sucesso!' });
 });
 
 // Basic health check

@@ -35,30 +35,48 @@
         </div>
     </header>
 
-    <main class="product-grid-container">
-        <div class="product-item">
-            <a href="vestidoverdevintage.html">
-                <img src="compras/pagina de compras (3).png" alt="Vestido Verde Vintage">
-            </a>
-            <div class="price">R$129,90</div>
-        </div>
-        <div class="product-item">
-            <a href="macacaoflorido.html">
-                <img src="compras/pagina de compras (4).png" alt="Macacão Florido Feminino">
-            </a>
-            <div class="price">R$89,90</div>
-        </div>
-        <div class="product-item">
-            <a href="camisetabasicapretafeminina.html">
-                <img src="compras/pagina de compras (1).png" alt="Camiseta Básica Preta Feminina">
-            </a>
-            <div class="price">R$49,90</div>
-        </div>
+    <main class="product-grid-container" id="product-container">
+        <!-- Products will be loaded here -->
     </main>
 
     <footer class="footer">
         <p>&copy; 2025 Todos os direitos reservados Desculpe, Estou Fashion</p>
     </footer>
 
+    <script>
+        async function loadProducts() {
+            try {
+                const response = await fetch('http://localhost:3000/api/products');
+                const products = await response.json();
+                const container = document.getElementById('product-container');
+                container.innerHTML = '';
+
+                const feminineProducts = products.filter(p => p.categoria === 'Feminino');
+                if (feminineProducts.length === 0) {
+                    container.innerHTML = '<p>Nenhum produto feminino disponível no momento.</p>';
+                    return;
+                }
+
+                feminineProducts.forEach(product => {
+                    const item = document.createElement('div');
+                    item.className = 'product-item';
+                    item.innerHTML = `
+                        <a href="/produto/${product._id}">
+                            <img src="${product.imagens && product.imagens[0] ? product.imagens[0] : 'compras/pagina de compras (1).png'}" alt="${product.nome}">
+                            <div class="price">R$ ${Number(product.preco || 0).toFixed(2)}</div>
+                            <p class="description">${product.nome}</p>
+                            <p class="gender">${product.categoria}</p>
+                        </a>
+                    `;
+                    container.appendChild(item);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar produtos:', error);
+                document.getElementById('product-container').innerHTML = '<p>Erro ao carregar produtos.</p>';
+            }
+        }
+
+        loadProducts();
+    </script>
 </body>
 </html>
