@@ -54,6 +54,24 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    async function loadCategorias() {
+        // Placeholder for categories
+        const categoriasContainer = document.getElementById('categorias-container');
+        categoriasContainer.innerHTML = '<p>Categorias: Masculino, Feminino</p>';
+    }
+
+    async function loadEstoque() {
+        // Placeholder for stock
+        const estoqueContainer = document.getElementById('estoque-container');
+        estoqueContainer.innerHTML = '<p>Estoque não implementado</p>';
+    }
+
+    async function loadPedidos() {
+        // Placeholder for orders
+        const pedidosContainer = document.getElementById('pedidos-container');
+        pedidosContainer.innerHTML = '<p>Pedidos não implementado</p>';
+    }
+
     function displayProdutos(produtos) {
         const container = document.getElementById('products-container');
         container.innerHTML = '';
@@ -196,15 +214,24 @@ document.addEventListener('DOMContentLoaded', function() {
     function clearProdutoForm() {
         produtoForm.reset();
         previewImagem.innerHTML = '';
+        // Uncheck all tamanhos checkboxes
+        const tamanhosCheckboxes = document.querySelectorAll('input[name="tamanhos"]');
+        tamanhosCheckboxes.forEach(cb => cb.checked = false);
     }
 
     function fillProdutoForm(produto) {
         document.getElementById('nome').value = produto.nome;
         document.getElementById('descricao').value = produto.descricao;
         document.getElementById('preco').value = produto.preco;
-        document.getElementById('categoria').value = produto.id_categoria;
+        document.getElementById('categoria').value = produto.categoria;
         // store editing id on form
         produtoForm.dataset.editingId = produto._id;
+
+        // Set tamanhos checkboxes
+        const tamanhosCheckboxes = document.querySelectorAll('input[name="tamanhos"]');
+        tamanhosCheckboxes.forEach(cb => {
+            cb.checked = produto.tamanhos && produto.tamanhos.includes(cb.value);
+        });
 
         if (produto.imagens && produto.imagens.length) {
             const img = document.createElement('img');
@@ -234,17 +261,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 300));
 
     // Função de logout
-    logoutBtn.addEventListener('click', async () => {
-        try {
-            // if your logout remains PHP based, keep it. Otherwise implement new API.
-            const response = await fetch('/api/logout.php');
-            const result = await response.json();
-            if (result.success) {
-                window.location.href = 'index3.html';
-            }
-        } catch (error) {
-            console.error('Erro ao fazer logout:', error);
-        }
+    logoutBtn.addEventListener('click', () => {
+        window.location.href = 'index.html';
     });
 
     // Utilidade

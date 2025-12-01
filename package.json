@@ -7,7 +7,6 @@
     "mongodb": "^6.17.0",
     "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
-    "node": "^22.18.0",
     "sqlite3": "^5.1.7"
   },
   "scripts": {

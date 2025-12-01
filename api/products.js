@@ -49,6 +49,8 @@ router.get('/:id', async (req, res) => {
 // POST /api/products
 router.post('/', upload.single('imagem'), async (req, res) => {
   try {
+    console.log('POST /api/products - req.body:', req.body);
+    console.log('File:', req.file);
     const db = await connect();
     const { nome, descricao, preco, tamanhos, categoria } = req.body;
     let sizesArr = [];

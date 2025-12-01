@@ -1,13 +1,12 @@
-<%- include('layout', { body: `
 <div class="product-page-container">
     <div class="product-gallery">
-        <img src="${product.imagens && product.imagens[0] ? product.imagens[0] : 'compras/pagina de compras (1).png'}" alt="${product.nome}">
+        <img src="<%= product.imagens && product.imagens[0] ? product.imagens[0] : 'compras/pagina de compras (1).png' %>" alt="<%= product.nome %>">
     </div>
 
     <div class="product-details">
         <div class="title-section">
             <span class="tag-purple">Tendências</span>
-            <h1>${product.nome}</h1>
+            <h1><%= product.nome %></h1>
             <i class="fas fa-external-link-alt"></i>
         </div>
 
@@ -16,7 +15,7 @@
         </div>
 
         <div class="price-section">
-            <span class="current-price">R$ ${Number(product.preco || 0).toFixed(2)}</span>
+            <span class="current-price">R$ <%= Number(product.preco || 0).toFixed(2) %></span>
         </div>
 
         <div class="offer-banners">
@@ -25,7 +24,7 @@
         </div>
 
         <div class="color-selector">
-            <p><strong>Cor:</strong> ${product.cor || 'Padrão'}</p>
+            <p><strong>Cor:</strong> <%= product.cor || 'Padrão' %></p>
         </div>
 
         <div class="size-selector">
@@ -33,7 +32,13 @@
                 <p><strong>Tamanho</strong></p>
             </div>
             <div class="size-buttons">
-                ${product.tamanhos && product.tamanhos.length > 0 ? product.tamanhos.map(tamanho => `<button>${tamanho}</button>`).join('') : '<button>Único</button>'}
+                <% if (product.tamanhos && product.tamanhos.length > 0) { %>
+                    <% product.tamanhos.forEach(tamanho => { %>
+                        <button><%= tamanho %></button>
+                    <% }) %>
+                <% } else { %>
+                    <button>Único</button>
+                <% } %>
             </div>
         </div>
 
@@ -57,4 +62,3 @@
         </div>
     </div>
 </div>
-` }) %>

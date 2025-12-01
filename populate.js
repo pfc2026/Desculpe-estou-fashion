@@ -10,7 +10,7 @@ async function populateProducts() {
         preco: 99.90,
         tamanhos: ['P', 'M', 'G'],
         categoria: 'Masculino',
-        imagens: ['compras/pagina de compras (2).png'],
+        imagens: ['compras/foto.png'],
         slug: 'calca-jeans-masculina'
       },
       {
@@ -19,7 +19,7 @@ async function populateProducts() {
         preco: 79.90,
         tamanhos: ['P', 'M', 'G'],
         categoria: 'Masculino',
-        imagens: ['compras/pagina de compras (5).png'],
+        imagens: ['compras/foto2.png'],
         slug: 'camisa-xadres-masculina'
       },
       {
@@ -28,7 +28,7 @@ async function populateProducts() {
         preco: 49.90,
         tamanhos: ['P', 'M', 'G'],
         categoria: 'Masculino',
-        imagens: ['compras/pagina de compras (1).png'],
+        imagens: ['compras/foto3.png'],
         slug: 'camiseta-basica-masculina'
       },
       {
@@ -37,7 +37,7 @@ async function populateProducts() {
         preco: 39.90,
         tamanhos: ['Único'],
         categoria: 'Masculino',
-        imagens: ['compras/pagina de compras (6).png'],
+        imagens: ['compras/foto4.png'],
         slug: 'sunga-branca'
       },
       {
@@ -46,7 +46,7 @@ async function populateProducts() {
         preco: 49.90,
         tamanhos: ['P', 'M', 'G'],
         categoria: 'Feminino',
-        imagens: ['compras/pagina de compras (1).png'],
+        imagens: ['compras/foto5.png'],
         slug: 'camiseta-basica-preta-feminina'
       },
       {
@@ -55,7 +55,7 @@ async function populateProducts() {
         preco: 129.90,
         tamanhos: ['P', 'M', 'G'],
         categoria: 'Feminino',
-        imagens: ['compras/pagina de compras (3).png'],
+        imagens: ['compras/foto6.png'],
         slug: 'vestido-verde-vintage'
       },
       {
@@ -64,7 +64,7 @@ async function populateProducts() {
         preco: 89.90,
         tamanhos: ['P', 'M', 'G'],
         categoria: 'Feminino',
-        imagens: ['compras/pagina de compras (4).png'],
+        imagens: ['compras/Pagina inicial (1).png'],
         slug: 'macacao-florido'
       }
     ];

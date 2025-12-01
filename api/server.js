@@ -28,9 +28,25 @@ app.get('/categoria/:categoria', async (req, res) => {
     const db = await connect();
     const categoria = req.params.categoria;
     const products = await db.collection('products').find({ categoria: categoria }).toArray();
-    res.render('categoria', {
+    res.render('layout', {
       title: `${categoria} - Desculpe, Estou Fashion`,
-      categoria,
+      body: `
+        <div class="product-grid-container">
+          <h1>${categoria}</h1>
+          <div class="product-list">
+            ${products && products.length > 0 ? products.map(product => `
+              <div class="product-item">
+                <a href="/produto/${product._id}">
+                  <img src="${product.imagens && product.imagens[0] ? product.imagens[0] : 'compras/pagina de compras (1).png'}" alt="${product.nome}">
+                  <span class="price">R$ ${Number(product.preco || 0).toFixed(2)}</span>
+                  <p class="description">${product.nome} ${product.descricao ? ('- ' + product.descricao) : ''}</p>
+                  <p class="gender">${product.categoria}</p>
+                </a>
+              </div>
+            `).join('') : '<p>Nenhum produto disponível nesta categoria no momento.</p>'}
+          </div>
+        </div>
+      `,
       products
     });
   } catch (err) {
@@ -45,8 +61,68 @@ app.get('/produto/:id', async (req, res) => {
     const { ObjectId } = require('mongodb');
     const product = await db.collection('products').findOne({ _id: new ObjectId(req.params.id) });
     if (!product) return res.status(404).send('Produto não encontrado');
-    res.render('produto', {
+    res.render('layout', {
       title: `${product.nome} - Desculpe, Estou Fashion`,
+      body: `
+        <div class="product-page-container">
+          <div class="product-gallery">
+            <img src="${product.imagens && product.imagens[0] ? product.imagens[0] : 'compras/pagina de compras (1).png'}" alt="${product.nome}">
+          </div>
+
+          <div class="product-details">
+            <div class="title-section">
+              <span class="tag-purple">Tendências</span>
+              <h1>${product.nome}</h1>
+              <i class="fas fa-external-link-alt"></i>
+            </div>
+
+            <div class="reviews">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            </div>
+
+            <div class="price-section">
+              <span class="current-price">R$ ${Number(product.preco || 0).toFixed(2)}</span>
+            </div>
+
+            <div class="offer-banners">
+              <div class="offer">25% OFF Para pedidos R$169,00+ <i class="fas fa-chevron-right"></i></div>
+              <div class="offer">R$15,00 OFF Para pedidos R$... <i class="fas fa-chevron-right"></i></div>
+            </div>
+
+            <div class="color-selector">
+              <p><strong>Cor:</strong> ${product.cor || 'Padrão'}</p>
+            </div>
+
+            <div class="size-selector">
+              <div class="size-header">
+                <p><strong>Tamanho</strong></p>
+              </div>
+              <div class="size-buttons">
+                ${product.tamanhos && product.tamanhos.length > 0 ? product.tamanhos.map(tamanho => `<button>${tamanho}</button>`).join('') : '<button>Único</button>'}
+              </div>
+            </div>
+
+            <div class="shipping-info">
+              <p><strong>Enviado por</strong></p>
+              <div class="shipping-options">
+                <button>Envio Nacional</button>
+                <button class="active">Internacional</button>
+              </div>
+              <div class="import-notice">
+                <i class="fas fa-lightbulb"></i>
+                <span>Produto Internacional sujeito à declaração de importação e a tributos estaduais e federais.</span>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button class="add-to-cart">
+                ADICIONAR AO CARRINHO
+              </button>
+              <button class="wishlist"><i class="far fa-heart"></i></button>
+            </div>
+          </div>
+        </div>
+      `,
       product
     });
   } catch (err) {
